@@ -1,0 +1,70 @@
+{
+    "change-picture":{
+        "title":"Change image",
+        "library":"From gallery",
+        "camera":"From camera",
+        "file":"From your computer"
+    },
+    "modal":{
+        "close":"Close",
+        "edit":"Edit",
+        "new":"New",
+        "delete":"Delete",
+        "export":"Export"
+    },
+    "folder":{
+        "home":"Home",
+        "people":"Users",
+        "tasks":"Tasks",
+        "assignments":"Assignments",
+        "taskpane":"Tasks pane"
+    },
+    "home":{
+        "title":"Tareando",
+        "welcome":"Welcome",
+        "langButton":"Change Language",
+        "close":"Sign out"
+    },
+    "validators":{
+        "passwordMatch": "Passwords do not match",
+        "passwordProto": "At least 8 characters, one uppercase letter, one lowercase letter and one number",
+        "email": "You must introduce a valid email"
+    },
+    "login":{
+        "title":"Sign in",
+        "email":"Email",
+        "password":"Password",
+        "send":"Send"
+    },
+    "register":{
+        "title":"Register",
+        "register":"I want to register",
+        "first_name":"First name",
+        "last_name":"Last name",
+        "email":"Email",
+        "password":"Password",
+        "confirm_password":"Repeat password",
+        "send":"Send"
+    },
+    "assignment-detail":{
+        "title":"Assignment detail",
+        "person":"Person who performs it",
+        "tarea":"Task to perfom",
+        "date":"Date and Time"
+    },
+    "person-detail":{
+        "title":"Person detail",
+        "name":"Name",
+        "name-placeholder":"Type the name",
+        "surname":"Surname",
+        "surnname-placeholder":"Type the surname",
+        "nickname":"Nickname",
+        "nickname-placeholder":"Type the nickname"
+    },
+    "task-detail":{
+        "title":"Task detail",
+        "name":"Name",
+        "name-placeholder":"Type a name for the task",
+        "duration":"Duration"
+    }
+}

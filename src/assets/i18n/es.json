@@ -1,0 +1,74 @@
+{
+    "change-picture":{
+        "title":"Cambiar imagen",
+        "library":"Desde la galería",
+        "camera":"Desde la cámara",
+        "file":"Desde tu equipo"
+    },
+    "modal":{
+        "close":"Cerrar",
+        "edit":"Modificar",
+        "new":"Nuevo",
+        "delete":"Borrar",
+        "export":"Exportar"
+    },
+    "folder":{
+        "home":"Inicio",
+        "people":"Usuarios",
+        "tasks":"Tareas",
+        "assignments":"Asignaciones",
+        "taskpane":"Panel de tareas"
+    },
+    "home":{
+        "title":"Tareando",
+        "welcome":"Bienvenido",
+        "langButton":"Cambia idioma",
+        "close":"Cerrar sesión"
+    },
+    "assignment":{
+        "edit":"Editar",
+        "new":"Enviar"
+    },
+    "validators":{
+        "passwordMatch": "Las contraseñas no coinciden",
+        "passwordProto": "Al menos 8 caracteres, una letra mayúscula, una letra minúscula y un número",
+        "email": "Debe introducir un email válido"
+    },
+    "login":{
+        "title":"Iniciar sesión",
+        "email":"Email",
+        "password":"Contraseña",
+        "send":"Enviar"
+    },
+    "register":{
+        "title":"Registro",
+        "register":"quiero registrarme",
+        "first_name":"Nombre",
+        "last_name":"Apellidos",
+        "email":"Email",
+        "password":"Contraseña",
+        "confirm_password":"Repita contraseña",
+        "send":"Enviar"
+    },
+    "assignment-detail":{
+        "title":"Detalle de la asignación",
+        "person":"Persona que la realiza",
+        "tarea":"Tarea a realizar",
+        "date":"Fecha y hora"
+    },
+    "person-detail":{
+        "title":"Datos de la persona",
+        "name":"Nombre",
+        "name-placeholder":"Introduce el nombre",
+        "surname":"Apellidos",
+        "surnname-placeholder":"Introduce los apellidos",
+        "nickname":"Apodo",
+        "nickname-placeholder":"Introduce el apodo"
+    },
+    "task-detail":{
+        "title":"Datos de la tarea",
+        "name":"Nombre",
+        "name-placeholder":"Introduce un nombre para la tarea",
+        "duration":"Duración"
+    }
+}
