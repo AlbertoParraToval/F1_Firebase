@@ -14,14 +14,14 @@
     </ion-toolbar>
   </ion-header>
   
-  <app-home  *ngIf="folder=='Home'"></app-home>
-  <app-drivers  *ngIf="folder=='Drivers'"></app-drivers>
-  <app-teams   *ngIf="folder=='Teams'"></app-teams>
-  <app-managements   *ngIf="folder=='Managements'"></app-managements>
-  <app-aboutme   *ngIf="folder=='aboutme'"></app-aboutme>
-  
+  <app-home *ngIf="folder=='Home'"></app-home>
+  <app-drivers *ngIf="folder=='Drivers'"></app-drivers>
+  <app-teams *ngIf="folder=='Teams'"></app-teams>
+  <app-managements *ngIf="folder=='Managements'"></app-managements>
+  <app-aboutme *ngIf="folder=='aboutme'"></app-aboutme>
+  <app-circuits *ngIf="folder =='Circuits'"></app-circuits>
 
-  <ion-fab *ngIf=" folder!='Home'" vertical="bottom" horizontal="start" slot="fixed" >
+  <ion-fab *ngIf=" folder!='Home' && folder!='aboutme'" vertical="bottom" horizontal="start" slot="fixed" >
     <ion-fab-button (click)="onNewItem()" color="dark">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

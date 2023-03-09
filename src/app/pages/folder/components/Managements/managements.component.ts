@@ -27,7 +27,7 @@ export class ManagementsComponent implements OnInit {
     const modal = await this.modal.create({
       component:ManageDetailComponent,
       componentProps:{
-        m:manage
+        Manage:manage
       },
       cssClass:"modal-full-right-side"
     });
@@ -66,7 +66,8 @@ export class ManagementsComponent implements OnInit {
           text: 'Borrar',
           role: 'confirm',
           handler: () => {
-            this.manageSvc.deleteManageById(manage.id);
+            console.log(manage)
+            this.manageSvc.deleteManageById(manage);
           },
         },
       ],
@@ -79,7 +80,6 @@ export class ManagementsComponent implements OnInit {
 
   onDeleteManage(manage){
     this.onDeleteAlert(manage);
-    
   }
 
 }

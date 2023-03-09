@@ -10,6 +10,8 @@ import { TeamDetailComponent } from '../../core/components/team-detail/team-deta
 import {  ManageService } from '../../core/services/manage.service';
 import { DriverService } from '../../core/services/driver.service';
 import { TeamsService } from '../../core/services/teams.service';
+import { CircuitDetailComponent } from 'src/app/core';
+import { CircuitsService } from 'src/app/core/services/circuits.service';
 
 @Component({
   selector: 'app-folder',
@@ -28,6 +30,7 @@ export class FolderPage implements OnInit {
     private manageSvc:ManageService,
     private modal:ModalController,
     private activatedRoute: ActivatedRoute,
+    private circuitSvc: CircuitsService,
     private router:Router) { }
 
   ngOnInit() {
@@ -69,7 +72,10 @@ export class FolderPage implements OnInit {
           this.manageSvc.addManage(data.manage);
         });
         break;
-      case 'Task Panel':
+      case 'Circuits':
+        this.presentForm(CircuitDetailComponent, (data)=>{
+          this.circuitSvc.addCircuit(data.manage);
+        });
         break;
       default:
     }

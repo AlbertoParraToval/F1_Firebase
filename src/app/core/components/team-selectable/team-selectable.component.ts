@@ -52,7 +52,7 @@ export class TeamSelectableComponent implements OnInit, ControlValueAccessor {
     return this.tasksSvc.getteams();
   } 
 
-  onTaskClicked(teamdata:Team, accordion:IonAccordionGroup){
+  onTeamClicked(teamdata:Team, accordion:IonAccordionGroup){
     this.selectedTeam = teamdata;
     accordion.value='';
     this.propagateChange(this.selectedTeam.docId);

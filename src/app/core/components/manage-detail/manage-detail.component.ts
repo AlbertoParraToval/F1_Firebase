@@ -15,7 +15,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class ManageDetailComponent implements OnInit {
 
   form:FormGroup;
-  mode:"New" | "Edit" = "New";
+  mode:"New" | "Edit" = "Edit";
 
   @Input('manage') set manage(manage:Manage){
     if(manage){

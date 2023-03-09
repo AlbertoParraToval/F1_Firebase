@@ -1,0 +1,4 @@
+<ion-list>
+  <app-circuit *ngFor="let circuits of (getCircuits() | async)" [_circuit]="circuits" (onEdit)="onEditCircuit($event)" 
+  (onDelete)="onDeleteCircuit($event)"></app-circuit>
+</ion-list>

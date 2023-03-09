@@ -63,7 +63,7 @@ export class ManageService {
   getManagesBy(field, value){
     return new Promise<Manage[]>(async (resolve, reject)=>{
       try {
-        var Manages = (await this.firebase.getDocumentsBy('driverManage', field, value)).map<Manage>(doc=>{
+        var _Manage = (await this.firebase.getDocumentsBy('driverManage', field, value)).map<Manage>(doc=>{
           return {
             id:0,
             docId:doc.id,
@@ -71,7 +71,7 @@ export class ManageService {
             teamId:doc.data.teamId,
           }
         });
-        resolve(Manages);  
+        resolve(_Manage);  
       } catch (error) {
         reject(error);
       }
@@ -109,6 +109,5 @@ export class ManageService {
     } catch (error) {
       console.log(error);
     }
-    
   }
 }

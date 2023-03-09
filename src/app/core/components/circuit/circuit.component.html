@@ -1,0 +1,14 @@
+<ion-grid>
+  <ion-card>
+    <ion-card-header>
+      <img *ngIf="!_circuit.picture" src="\assets\user.png" />
+      <img *ngIf="_circuit.picture" alt="" [src]="_circuit.picture" />
+    </ion-card-header>
+      <ion-card-subtitle>{{_circuit.localizacion}}.</ion-card-subtitle>
+      <ion-card-content>
+        {{_circuit.localizacion}}
+      </ion-card-content>
+  <ion-button icon-only fill="clear" color="success" (click)="onEditClick()"><ion-icon style="zoom:1.5" name="create-outline" ></ion-icon></ion-button>
+  <ion-button icon-only fill="clear" color="danger" (click)="onDeleteClick()"><ion-icon style="zoom:1.5" name="trash-outline" ></ion-icon></ion-button>
+</ion-card>
+</ion-grid>

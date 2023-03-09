@@ -19,14 +19,14 @@ export class ManageComponent implements OnInit {
 
   @Output() onEdit = new EventEmitter;
   @Output() onDelete = new EventEmitter;
-  @Input('Manage') set Manage(a:Manage){
-    this._manage = a;
-    this.loadTaskAndPerson(a);
+  @Input('Manage') set Manage(manage:Manage){
+    this._manage = manage;
+    this.loadTeamAndDriver(manage);
   
   }
-  private async loadTaskAndPerson(a:Manage){
-    this._task.next(await this.teamsSvc.getteamById(a.teamId));
-    this._person.next(await this.driverSvc.getDriverById(a.driverId));
+  private async loadTeamAndDriver(manage:Manage){
+    this._task.next(await this.teamsSvc.getteamById(manage.teamId));
+    this._person.next(await this.driverSvc.getDriverById(manage.driverId));
   }
   getManage():Manage{
     return this._manage;

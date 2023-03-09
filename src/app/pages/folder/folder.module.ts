@@ -19,6 +19,7 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { createTranslateLoader } from '../../core/utils/translate';
 import { AboutmeComponent } from './components/aboutme/aboutme.component';
+import { CircuitsComponent } from './components/circuits/circuits.component';
 FullCalendarModule.registerPlugins([
   scrollgridPlugin,
   daygridPlugin,
@@ -45,7 +46,8 @@ FullCalendarModule.registerPlugins([
     ManagementsComponent,
     TeamsComponent, 
     DriversComponent,
-    AboutmeComponent
+    AboutmeComponent,
+    CircuitsComponent
     ]
 })
 export class FolderPageModule {}

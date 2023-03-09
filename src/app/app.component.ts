@@ -1,6 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { ThemeModeService } from './core';
 import { FirebaseService } from './core/services/firebase/firebase-service';
 import { LocaleService } from './core/services/locale.service';
 import { UserService } from './core/services/user.service';
@@ -17,7 +18,7 @@ export class AppComponent implements AfterViewInit{
     { title: 'Drivers', url: '/folder/Drivers', icon: 'people' },
     { title: 'Teams', url: '/folder/Teams', icon: 'file-tray-full' },
     { title: 'DriverManage', url: '/folder/Managements', icon: 'list' },
-    { title: 'ContractDuration', url: '/folder/Task Panel', icon: 'layers' },
+    { title: 'Circuits', url: '/folder/Circuits', icon: 'layers' },
     { title: 'AboutMe', url: '/folder/aboutme', icon: 'person' },
   ];
   public labels = [];
@@ -27,9 +28,11 @@ export class AppComponent implements AfterViewInit{
     private translate: TranslateService,
     private locale:LocaleService,
     public user:UserService,
-    private router:Router
+    private router:Router,
+    public themeService: ThemeModeService
   ) {
     this.init();
+    this.themeService.toggleDarkMode();
   }
 
   private async init(){

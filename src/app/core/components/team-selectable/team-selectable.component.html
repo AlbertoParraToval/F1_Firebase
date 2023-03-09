@@ -12,7 +12,7 @@
     </ion-item>
     <div class="ion-padding" slot="content">
       <ion-list>
-        <ion-item *ngFor="let team of getTeams()" button detail  (click)="onTaskClicked(team, accordion)">
+        <ion-item *ngFor="let team of getTeams()" button detail  (click)="onTeamClicked(team, accordion)">
           <ion-avatar class="task">
             <img *ngIf="!team.picture" alt="Silhouette of a task's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
             <img *ngIf="team.picture" alt="task picture" [src]="team.picture" />
