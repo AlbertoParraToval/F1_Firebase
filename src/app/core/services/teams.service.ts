@@ -36,7 +36,7 @@ export class TeamsService {
       docId:doc.id,
       name:doc.data().name,
       description:doc.data().description,
-      picture:doc.data().picture
+      picture:doc.data().picture,
     };
   }
 
@@ -53,7 +53,7 @@ export class TeamsService {
           docId:team.id,
           name:team.data.name,
           description:team.data.description,
-          picture:team.data.picture
+          picture:team.data.picture,
         });  
       } catch (error) {
         reject(error);
@@ -63,21 +63,23 @@ export class TeamsService {
 
   async deleteTeam(team:Team){
     await this.firebase.deleteDocument('teams', team.docId);
+  } catch (error) {
+    console.log(error);
   }
 
-  async addteam(team:Team){
-    var _Team = {
+  async addteam(teamdata:Team){
+    var _team = {
       id:0,
-      docId:team.docId,
-      name:team.name,
-      description:team.description,
+      docId:teamdata.docId,
+      name:teamdata.name,
+      description:teamdata.description,
     };
-    if(team['pictureFile']){
-      var response = await this.uploadImage(team['pictureFile']);
-      _Team['picture'] = response.image;
+    if(teamdata['pictureFile']){
+      var response = await this.uploadImage(teamdata['pictureFile']);
+      _team['picture'] = response.image;
     }
     try {
-      await this.firebase.createDocument('teams', _Team);  
+      await this.firebase.createDocument('teams', _team);  
     } catch (error) {
       console.log(error);
     }
@@ -94,19 +96,19 @@ export class TeamsService {
     });
   }
 
-  async updateteam(team:Team){
-    var _Team = {
+  async updateteam(teamdata:Team){
+    var _team = {
       id:0,
-      docId:team.docId,
-      name:team.name,
-      description:team.description,
+      docId:teamdata.docId,
+      name:teamdata.name,
+      description:teamdata.description,
     };
-    if(team['pictureFile']){
-      var response:FileUploaded = await this.uploadImage(team['pictureFile']);
-      _Team['picture'] = response.file;
+    if(teamdata['pictureFile']){
+      var response:FileUploaded = await this.uploadImage(teamdata['pictureFile']);
+      _team['picture'] = response.file;
     }
     try {
-      await this.firebase.updateDocument('teams', _Team.docId, _Team);  
+      await this.firebase.updateDocument('teams', _team.docId, _team);  
     } catch (error) {
       console.log(error);
     }

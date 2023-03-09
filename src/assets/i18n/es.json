@@ -14,13 +14,14 @@
     },
     "folder":{
         "home":"Inicio",
-        "people":"Usuarios",
-        "tasks":"Tareas",
-        "assignments":"Asignaciones",
-        "taskpane":"Panel de tareas"
+        "driver":"Pilotos",
+        "teams":"Equipos",
+        "DriverManage":"Fichajes",
+        "durationContract":"Panel de tareas",
+        "aboutme":"Sobre Mí"
     },
     "home":{
-        "title":"Tareando",
+        "title":"F1_Firebase",
         "welcome":"Bienvenido",
         "langButton":"Cambia idioma",
         "close":"Cerrar sesión"
@@ -47,17 +48,16 @@
         "last_name":"Apellidos",
         "email":"Email",
         "password":"Contraseña",
-        "confirm_password":"Repita contraseña",
+        "confirm_password":"Por favor, repita la contraseña",
         "send":"Enviar"
     },
     "assignment-detail":{
-        "title":"Detalle de la asignación",
-        "person":"Persona que la realiza",
-        "tarea":"Tarea a realizar",
-        "date":"Fecha y hora"
+        "title":"Detalle del Fichaje",
+        "driver":"Piloto Fichado",
+        "team":"Escudería"
     },
     "person-detail":{
-        "title":"Datos de la persona",
+        "title":"Datos del Piloto",
         "name":"Nombre",
         "name-placeholder":"Introduce el nombre",
         "surname":"Apellidos",
@@ -66,9 +66,9 @@
         "nickname-placeholder":"Introduce el apodo"
     },
     "task-detail":{
-        "title":"Datos de la tarea",
+        "title":"Datos de la Escudería",
         "name":"Nombre",
-        "name-placeholder":"Introduce un nombre para la tarea",
+        "name-placeholder":"Introduce el nombre de la escudería",
         "duration":"Duración"
     },
     "information":{

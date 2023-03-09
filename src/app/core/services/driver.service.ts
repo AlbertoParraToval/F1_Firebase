@@ -10,7 +10,7 @@ import { FileUploaded, FirebaseService } from './firebase/firebase-service';
 export class DriverService{
 
   private _driverSubject:BehaviorSubject<Driver[]> = new BehaviorSubject([]);
-  public _driver$ = this._driverSubject.asObservable();
+  public driver$ = this._driverSubject.asObservable();
   
   unsubscr;
   constructor(
@@ -70,7 +70,7 @@ export class DriverService{
       docId:driver.docId,
       first_name:driver.first_name,
       last_name:driver.last_name,
-      nickname:driver.nickname
+      nickname:driver.nickname,
     };
     if(driver['pictureFile']){
       var response = await this.uploadImage(driver['pictureFile']);
@@ -99,7 +99,7 @@ export class DriverService{
       docId:driver.docId,
       first_name:driver.first_name,
       last_name:driver.last_name,
-      nickname:driver.nickname
+      nickname:driver.nickname,
     };
     if(driver['pictureFile']){
       var response:FileUploaded = await this.uploadImage(driver['pictureFile']);

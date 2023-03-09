@@ -36,10 +36,10 @@ export class ManagementsComponent implements OnInit {
       if(result && result.data){
         switch(result.data.mode){
           case 'New':
-            this.manageSvc.addManage(result.data.Manage);
+            this.manageSvc.addManage(result.data.manage);
             break;
           case 'Edit':
-            this.manageSvc.updateManage(result.data.Manage);
+            this.manageSvc.updateManage(result.data.manage);
             break;
           default:
         }
@@ -47,11 +47,11 @@ export class ManagementsComponent implements OnInit {
     });
   }
 
-  onEditManage(Manage){
-    this.presentManageForm(Manage);
+  onEditManage(manage){
+    this.presentManageForm(manage);
   }
 
-  async onDeleteAlert(Manage){
+  async onDeleteAlert(manage){
     const alert = await this.alert.create({
       header: '¿Está seguro de que desear borrar la asignación de tarea?',
       buttons: [
@@ -66,7 +66,7 @@ export class ManagementsComponent implements OnInit {
           text: 'Borrar',
           role: 'confirm',
           handler: () => {
-            this.manageSvc.deleteManageById(Manage.id);
+            this.manageSvc.deleteManageById(manage.id);
           },
         },
       ],
@@ -77,8 +77,8 @@ export class ManagementsComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
-  onDeleteManage(Manage){
-    this.onDeleteAlert(Manage);
+  onDeleteManage(manage){
+    this.onDeleteAlert(manage);
     
   }
 

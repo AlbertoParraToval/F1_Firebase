@@ -4,7 +4,6 @@ import { ManageService } from 'src/app/core/services/manage.service';
 import { DriverDetailComponent} from 'src/app/core/components/driver-detail/driver-detail.component';
 import { DriverService} from 'src/app/core/services/driver.service';
 import { Driver } from 'src/app/core/models/drivers.model';
-import { HttpClientProvider } from 'src/app/core/services/http-client.provider';
 
 @Component({
   selector: 'app-drivers',
@@ -12,13 +11,11 @@ import { HttpClientProvider } from 'src/app/core/services/http-client.provider';
   styleUrls: ['./drivers.component.scss'],
 })
 export class DriversComponent implements OnInit {
-
   constructor(
     private driversSvc:DriverService,
     private ManagesSvc:ManageService,
     private modal:ModalController,
     private alert:AlertController,
-    private api:HttpClientProvider
   ) { }
 
   ngOnInit() {
@@ -26,14 +23,14 @@ export class DriversComponent implements OnInit {
   }
 
   getDrivers(){
-    return this.driversSvc._driver$;
+    return this.driversSvc.driver$;
   }
 
-  async presentDriverForm(driver:Driver){
+  async presentDriverForm(driverData:Driver){
     const modal = await this.modal.create({
       component:DriverDetailComponent,
       componentProps:{
-        d:driver
+        driver:driverData
       },
       cssClass:"modal-full-right-side"
     });
@@ -53,11 +50,11 @@ export class DriversComponent implements OnInit {
     });
   }
 
-  onEditDriver(driver){
-    this.presentDriverForm(driver);
+  onEditDriver(driverData){
+    this.presentDriverForm(driverData);
   }
 
-  async onDeleteAlert(driver){
+  async onDeleteAlert(driverData){
     const alert = await this.alert.create({
       header:'Atención',
       message: '¿Está seguro de que desear borrar a la persona?',
@@ -73,7 +70,7 @@ export class DriversComponent implements OnInit {
           text: 'Borrar',
           role: 'confirm',
           handler: () => {
-            this.driversSvc.deleteDriver(driver);
+            this.driversSvc.deleteDriver(driverData);
           },
         },
       ],
@@ -84,7 +81,7 @@ export class DriversComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
-  async onDriverExistsAlert(task){
+  async onDriverExistsAlert(driverData){
     const alert = await this.alert.create({
       header: 'Error',
       message: 'No es posible borrar la persona porque está asignada a una tarea',
@@ -104,10 +101,10 @@ export class DriversComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
-  async onDeleteDriver(driver){
-      if((await this.ManagesSvc.getManagesByDriverId(driver.id)).length==0)
-      this.onDeleteAlert(driver);
+  async onDeleteDriver(driverData){
+      if((await this.ManagesSvc.getManagesByDriverId(driverData.id)).length==0)
+      this.onDeleteAlert(driverData);
     else
-      this.onDriverExistsAlert(driver);
+      this.onDriverExistsAlert(driverData);
   }
 }

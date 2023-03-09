@@ -12,7 +12,7 @@ export class TeamComponent implements OnInit {
 
   @Output() onEdit = new EventEmitter;
   @Output() onDelete = new EventEmitter;
-  @Input() team:Team;
+  @Input() _team:Team;
   isLowResolution = lowres;
   constructor() { }
 
@@ -20,11 +20,11 @@ export class TeamComponent implements OnInit {
 
   onEditClick(slide:IonItemSliding){
     slide.close();
-    this.onEdit.emit(this.team);
+    this.onEdit.emit(this._team);
   }
 
   onDeleteClick(slide:IonItemSliding){
     slide.close();
-    this.onDelete.emit(this.team);
+    this.onDelete.emit(this._team);
   }
 }

@@ -11,21 +11,16 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
     <ion-item-divider>
       <ion-label>
-      {{'assignment-detail.person' | translate}}
+      {{'assignment-detail.driver' | translate}}
       </ion-label>
     </ion-item-divider>
     <app-team-selectable formControlName="teamId"></app-team-selectable>
     <ion-item-divider>
       <ion-label>
-        {{'assignment-detail.task' | translate}}
+        {{'assignment-detail.team' | translate}}
       </ion-label>
     </ion-item-divider>
     <app-driver-selectable formControlName="driverId"></app-driver-selectable>
-    <ion-item-divider>
-      <ion-label>
-        {{'assignment-detail.date' | translate}}
-      </ion-label>
-    </ion-item-divider>
   </form>
 </ion-content>
 <ion-footer>

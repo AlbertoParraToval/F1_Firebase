@@ -17,7 +17,7 @@
         "driver":"Drivers",
         "teams":"Teams",
         "DriverManage":"DriverManage",
-        "ContractDuration":"Tasks pane",
+        "ContractDuration":"Circuits",
         "aboutme":"About Me"
     },
     "home":{
@@ -48,10 +48,9 @@
         "send":"Send"
     },
     "assignment-detail":{
-        "title":"Assignment detail",
-        "person":"Person who performs it",
-        "tarea":"Task to perfom",
-        "date":"Date and Time"
+        "title":"Transfer detail",
+        "driver":"Driver",
+        "team":"Team"
     },
     "person-detail":{
         "title":"Person detail",

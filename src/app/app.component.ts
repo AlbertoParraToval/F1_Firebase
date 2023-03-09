@@ -14,7 +14,7 @@ export class AppComponent implements AfterViewInit{
   
   public appPages = [
     { title: 'Home', url: '/folder/Home', icon: 'home'},
-    { title: 'Drivers', url: '/folder/Driver', icon: 'people' },
+    { title: 'Drivers', url: '/folder/Drivers', icon: 'people' },
     { title: 'Teams', url: '/folder/Teams', icon: 'file-tray-full' },
     { title: 'DriverManage', url: '/folder/Managements', icon: 'list' },
     { title: 'ContractDuration', url: '/folder/Task Panel', icon: 'layers' },

@@ -17,7 +17,7 @@ export class TeamDetailComponent implements OnInit {
   mode:"New" | "Edit" = "New";
   currentImage = new BehaviorSubject<string>("");
   currentImage$ = this.currentImage.asObservable();
-  @Input('team') set team(team:Team){
+  @Input('teamdata') set team(team:Team){
     if(team){
       this.form.controls.id.setValue(team.id);
       this.form.controls.docId.setValue(team.docId);
@@ -44,7 +44,7 @@ export class TeamDetailComponent implements OnInit {
       docId:[''],
       name:['', [Validators.required]],
       picture:[''],
-      description:[0, [Validators.required]],
+      description:['', [Validators.required]],
       pictureFile:[null]
     });
   }

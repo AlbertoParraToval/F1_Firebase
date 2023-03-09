@@ -30,8 +30,7 @@ export class SigninComponent implements OnInit {
 
   async register(){
     const modal = await this.modalCtrl.create({
-      component:SignupComponent,
-      cssClass:"modal-full-right-side"
+      component:SignupComponent
     });
 
     modal.onDidDismiss().then(async(response)=>{
@@ -65,7 +64,6 @@ export class SigninComponent implements OnInit {
   }
   
   errorsToArray(errors){
-   
     if(errors && !('required' in errors))
       return [Object.keys(errors)[0]];
     else

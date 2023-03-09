@@ -20,6 +20,7 @@ export class TeamsComponent implements OnInit {
   ) { }
 
   ngOnInit() {}
+  
   getTeams(){
     return this.TeamsSvc.teams$;
   }
@@ -48,11 +49,11 @@ export class TeamsComponent implements OnInit {
     });
   }
 
-  onEditTeam(team){
-    this.presentTeamForm(team);
+  onEditTeam(teamdata){
+    this.presentTeamForm(teamdata);
   }
 
-  async onDeleteAlert(Team){
+  async onDeleteAlert(teamdata){
 
     const alert = await this.alert.create({
       header: 'Atención',
@@ -69,7 +70,7 @@ export class TeamsComponent implements OnInit {
           text: 'Borrar',
           role: 'confirm',
           handler: () => {
-            this.TeamsSvc.deleteTeam(Team);
+            this.TeamsSvc.deleteTeam(teamdata);
           },
         },
       ],
@@ -80,7 +81,7 @@ export class TeamsComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
-  async onTeamExistsAlert(Team){
+  async onTeamExistsAlert(teamdata){
     const alert = await this.alert.create({
       header: 'Error',
       message: 'No es posible borrar la tarea porque está asignada a una persona',
@@ -100,12 +101,12 @@ export class TeamsComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
   
-  async onDeleteTeam(Team){
+  async onDeleteTeam(teamdata){
     
-    if((await this.manageSvc.getManagesByTeamId(Team.docId)).length==0)
-      this.onDeleteAlert(Team);
+    if((await this.manageSvc.getManagesByTeamId(teamdata.docId)).length==0)
+      this.onDeleteAlert(teamdata);
     else
-      this.onTeamExistsAlert(Team);
+      this.onTeamExistsAlert(teamdata);
   }
 
   async onExport(){
