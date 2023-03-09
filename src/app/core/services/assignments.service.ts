@@ -3,7 +3,7 @@ import * as moment from 'moment-timezone';
 import { Injectable } from '@angular/core';
 import { Assignment } from '../models/assignment.model';
 import { BehaviorSubject, from, lastValueFrom, map, of, tap } from 'rxjs';
-import { ApiService } from './api.service';
+
 import { FirebaseService } from './firebase/firebase-service';
 import { DocumentData } from 'firebase/firestore';
 
@@ -20,7 +20,6 @@ export class AssignmentsService {
 
   unsubscr;
   constructor(
-    private api:ApiService,
     private firebase:FirebaseService
   ) {
     this.unsubscr = this.firebase.subscribeToCollection('asignaciones',this._assignmentsSubject, this.mapAssignment);

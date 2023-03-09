@@ -3,7 +3,7 @@ import { DocumentData } from 'firebase/firestore';
 import { BehaviorSubject } from 'rxjs';
 import { Team } from 'src/app/core/models/teams.model';
 import { environment } from 'src/environments/environment';
-import { ApiService } from './api.service';
+
 import { FileUploaded, FirebaseService } from './firebase/firebase-service';
 import { File } from '@awesome-cordova-plugins/file/ngx'
 import { Platform } from '@ionic/angular';
@@ -19,7 +19,6 @@ export class TeamsService {
 
   unsubscr;
   constructor(
-    private api:ApiService,
     private platform:Platform,
     private firebase:FirebaseService,
     private file:File

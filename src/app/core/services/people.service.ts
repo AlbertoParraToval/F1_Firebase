@@ -3,7 +3,6 @@ import { DocumentData } from 'firebase/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Person } from '../models/person.model';
-import { ApiService } from './api.service';
 import { FileUploaded, FirebaseService } from './firebase/firebase-service';
 import { HttpClientProvider } from './http-client.provider';
 
@@ -17,7 +16,6 @@ export class PeopleService{
   
   unsubscr;
   constructor(
-    private api:ApiService,
     private firebase:FirebaseService
   ) {
     this.unsubscr = this.firebase.subscribeToCollection('drivers',this._peopleSubject, this.mapPeople);

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { UserService } from 'src/app/core/services/user.service';
 import { environment } from 'src/environments/environment';
-import { ApiService } from '../../core';
+
 import { AssignmentDetailComponent } from '../../core/components/assignment-detail/assignment-detail.component';
 import { PersonDetailComponent } from '../../core/components/person-detail/person-detail.component';
 import { TeamDetailComponent } from '../../core/components/team-detail/team-detail.component';
@@ -23,7 +23,6 @@ export class FolderPage implements OnInit {
 
   constructor(
     public user:UserService,
-    private api:ApiService,
     private peopleSvc:PeopleService,
     private teamsSvc:TeamsService,
     private assignmentsSvc:AssignmentsService,
