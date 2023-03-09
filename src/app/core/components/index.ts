@@ -1,4 +1,3 @@
-
 export * from "./driver-detail/driver-detail.component";
 export * from "./team/team.component"
 export * from "./team-detail/team-detail.component";

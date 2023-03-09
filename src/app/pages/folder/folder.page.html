@@ -21,6 +21,7 @@
   <app-aboutme *ngIf="folder=='aboutme'"></app-aboutme>
   <app-circuits *ngIf="folder =='Circuits'"></app-circuits>
 
+  
   <ion-fab *ngIf=" folder!='Home' && folder!='aboutme'" vertical="bottom" horizontal="start" slot="fixed" >
     <ion-fab-button (click)="onNewItem()" color="dark">
       <ion-icon name="add"></ion-icon>

@@ -40,12 +40,12 @@ export class CircuitsService {
   getCircuitById(id:string):Promise<Circuit>{
     return new Promise<Circuit>(async (resolve, reject)=>{
       try {
-        var Circuit = (await this.firebase.getDocument('Circuits', id));
+        var _Circuit = (await this.firebase.getDocument('Circuits', id));
         resolve({
           id:0,
-          docId:Circuit.id,
-          localizacion:Circuit.data.localizacion,
-          picture:Circuit.data.picture, 
+          docId:_Circuit.id,
+          localizacion:_Circuit.data.localizacion,
+          picture:_Circuit.data.picture, 
         });  
       } catch (error) {
         reject(error);
@@ -64,7 +64,7 @@ export class CircuitsService {
   async addCircuit(Circuit:Circuit){
     var _Circuit = {
       docId:Circuit.docId,
-      nickname:Circuit.localizacion,
+      localizacion:Circuit.localizacion,
     };
     if(Circuit['pictureFile']){
       var response = await this.uploadImage(Circuit['pictureFile']);
@@ -91,7 +91,7 @@ export class CircuitsService {
   async updateCircuit(Circuit:Circuit){
     var _Circuit = {
       docId:Circuit.docId,
-      first_name:Circuit.localizacion,
+      localizacion:Circuit.localizacion,
     };
     if(Circuit['pictureFile']){
       var response:FileUploaded = await this.uploadImage(Circuit['pictureFile']);

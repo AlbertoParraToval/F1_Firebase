@@ -1,4 +1,13 @@
 <ion-content>
-  <ion-title>{{"home.welcome" | translate}}</ion-title>
-  <ion-text>{{(user.user$ | async).first_name}} {{(user.user$ | async).last_name}}</ion-text>
+  <div class="container">
+    <ion-img src="./../../../../.."></ion-img>
+    <div class="race-info">
+      <h2>Próxima Carrera</h2>
+      <h3>Gran Premio de España</h3>
+      <p class="countdown">Faltan <span id="days">{{ days }}</span> días, <span id="hours">{{ hours }}</span> horas, <span id="minutes">{{ minutes }}</span> minutos y <span id="seconds">{{ seconds }}</span> segundos</p>
+
+      <p class="date">19 de marzo, 2023</p>
+      <p class="location">Circuito de Barcelona-Catalunya</p>
+    </div>
+  </div>
 </ion-content>
