@@ -10,22 +10,14 @@ import { Driver, DriverService} from 'src/app/core';
 })
 export class DriverComponent implements OnInit {
 
-  private _driver:Driver;
+
   @Output() onEdit = new EventEmitter;
   @Output() onDelete = new EventEmitter;
-  @Input() set driver(d:Driver){
-    this._driver = d;
-  }
-  getDriver(){
-    return this.driver;
-  }
+  @Input() _driver:Driver;
   isLowResolution:()=>boolean = lowres;
   
   constructor(
-    private driverSvc:DriverService
-  ){
-
-  }
+  ){}
 
   ngOnInit(
   ) {
@@ -34,12 +26,12 @@ export class DriverComponent implements OnInit {
 
   onEditClick(slide:IonItemSliding){
     slide.close();
-    this.onEdit.emit(this.driver);
+    this.onEdit.emit(this._driver);
   }
 
   onDeleteClick(slide:IonItemSliding){
     slide.close();
-    this.onDelete.emit(this.driver);
+    this.onDelete.emit(this._driver);
   }
 
 }
