@@ -13,11 +13,12 @@ import { UserService } from './core/services/user.service';
 export class AppComponent implements AfterViewInit{
   
   public appPages = [
-    { title: 'home', url: '/folder/Home', icon: 'home'},
-    { title: 'people', url: '/folder/People', icon: 'people' },
-    { title: 'tasks', url: '/folder/Tasks', icon: 'file-tray-full' },
-    { title: 'assignments', url: '/folder/Assignments', icon: 'list' },
-    { title: 'taskpane', url: '/folder/Task Panel', icon: 'layers' },
+    { title: 'Home', url: '/folder/Home', icon: 'home'},
+    { title: 'Drivers', url: '/folder/People', icon: 'people' },
+    { title: 'Teams', url: '/folder/Tasks', icon: 'file-tray-full' },
+    { title: 'DriverManage', url: '/folder/Assignments', icon: 'list' },
+    { title: 'ContractDuration', url: '/folder/Task Panel', icon: 'layers' },
+    { title: 'AboutMe', url: '/folder/aboutme', icon: 'person' },
   ];
   public labels = [];
   language = 1; // 0 español, 1 inglés

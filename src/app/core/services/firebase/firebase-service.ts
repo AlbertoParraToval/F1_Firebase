@@ -21,6 +21,8 @@ export interface FirebaseDocument{
 export interface FirestoreImages{
 
 }
+//Cambairlo
+
 export const FIRESTORE_TASKS_COLLECTION = 'tareando-tasks';
 export const FIRESTORE_PEOPLE_COLLECTION = 'tareando-people';
 export const FIRESTORE_ASSIGNMENTS_COLLECTION = 'tareando-assignments';

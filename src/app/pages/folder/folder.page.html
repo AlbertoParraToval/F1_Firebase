@@ -19,8 +19,11 @@
   <app-tasks *ngIf="folder=='Tasks'"></app-tasks>
   <app-assignments *ngIf="folder=='Assignments'"></app-assignments>
   <app-schedule *ngIf="folder=='Task Panel'"></app-schedule>
-  <ion-fab *ngIf="folder!='People' && folder!='Home'" vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="onNewItem()">
+  <app-aboutme *ngIf="folder=='aboutme'"></app-aboutme>
+  
+
+  <ion-fab *ngIf=" folder!='Home'" vertical="bottom" horizontal="start" slot="fixed" >
+    <ion-fab-button (click)="onNewItem()" color="dark">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

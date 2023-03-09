@@ -28,6 +28,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { createTranslateLoader } from '../../core/utils/translate';
+import { AboutmeComponent } from './components/aboutme/aboutme.component';
 FullCalendarModule.registerPlugins([
   scrollgridPlugin,
   daygridPlugin,
@@ -55,6 +56,7 @@ FullCalendarModule.registerPlugins([
     TasksComponent, 
     PeopleComponent,
     ScheduleComponent,
+    AboutmeComponent
     ]
 })
 export class FolderPageModule {}

@@ -1,7 +1,7 @@
 <ion-app>
-  <ion-fab vertical="top" horizontal="end" edge="false" slot="fixed">
-    <ion-fab-button (click)="onLanguage()">
-      <ion-icon size="small" name="language-outline"></ion-icon>
+  <ion-fab vertical="bottom" horizontal="end" edge="false" slot="fixed">
+    <ion-fab-button (click)="onLanguage()" color="dark">
+      <ion-icon  size="small" name="language-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
   <ion-split-pane *ngIf="(user.isLogged$ | async)" contentId="main-content">
@@ -10,7 +10,7 @@
         <ion-list id="inbox-list">
           <h1>{{'home.title' | translate}}</h1>
           <ion-list-header class="menu-header">
-              <img class="menu-header__img" src="https://picsum.photos/300/300">
+              <ion-img src="./../assets/images/fotos/img2.jpg"></ion-img>
           </ion-list-header>
         
 

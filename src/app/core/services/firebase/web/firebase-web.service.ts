@@ -19,13 +19,12 @@ export class FirebaseWebService extends FirebaseService implements OnDestroy{
   }
   async init(){
     const firebaseConfig = {
-      apiKey: "AIzaSyB24hwqAcC4O3vJOW1LpulCOMOKLxpUM2I",
-      authDomain: "tareando-d2e34.firebaseapp.com",
-      projectId: "tareando-d2e34",
-      storageBucket: "tareando-d2e34.appspot.com",
-      messagingSenderId: "814431877695",
-      appId: "1:814431877695:web:e55309685f5827d3b0968a",
-      measurementId: "G-BPNBWB3QXT"
+      apiKey: "AIzaSyD7f7PU9dXgKLytfhQ-MRivcajWjlFLh1Y",
+      authDomain: "f1-fantasy-a965a.firebaseapp.com",
+      projectId: "f1-fantasy-a965a",
+      storageBucket: "f1-fantasy-a965a.appspot.com",
+      messagingSenderId: "200412911778",
+      appId: "1:200412911778:web:fc3ea29f16e20b03c45ffb"
     };
     
       // Initialize Firebase

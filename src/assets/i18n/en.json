@@ -14,13 +14,14 @@
     },
     "folder":{
         "home":"Home",
-        "people":"Users",
-        "tasks":"Tasks",
-        "assignments":"Assignments",
-        "taskpane":"Tasks pane"
+        "driver":"Drivers",
+        "teams":"Teams",
+        "DriverManage":"DriverManage",
+        "ContractDuration":"Tasks pane",
+        "aboutme":"About Me"
     },
     "home":{
-        "title":"Tareando",
+        "title":"F1_Firebase",
         "welcome":"Welcome",
         "langButton":"Change Language",
         "close":"Sign out"
@@ -66,5 +67,15 @@
         "name":"Name",
         "name-placeholder":"Type a name for the task",
         "duration":"Duration"
+    },
+
+    "information":{
+        "name":"Alberto Parra Toval",
+        "subName":"Ionic project of the ADD/HLC subject",
+        "Intro":"Introduction",
+        "texto1":" When I was thinking about doing the ionic activity that the teacher suggested, I wanted to make an App that I have always wanted to have. As a fan of F1 since I was a little boy, I would have liked that in an App you could edit the drivers and put them in different teams to the ones they are in reality.",
+        "Intro2":"How does this App work?",
+        "texto2":" This App is divided into 3 pages, the 1st 'Pilots' where you will find a list of pilots where you can insert, modify and delete as you wish, a 2nd page 'Teams' where you will also find another list where you can modify, insert and delete the data of the same, and a 3rd page that will focus on linking the previous two but following the same functionality, ie, delete, modify and insert."
+        
     }
 }
