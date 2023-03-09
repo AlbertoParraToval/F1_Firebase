@@ -1,37 +1,37 @@
 import { Component, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IonAccordionGroup } from '@ionic/angular';
-import { Person } from '../../models';
-import { PeopleService } from '../../services';
+import { Driver } from '../../models';
+import { DriverService} from '../../services';
 
 
 export const USER_PROFILE_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => PersonSelectableComponent),
+  useExisting: forwardRef(() => DriverSelectableComponent),
   multi: true
 };
 
 
 @Component({
-  selector: 'app-person-selectable',
-  templateUrl: './person-selectable.component.html',
-  styleUrls: ['./person-selectable.component.scss'],
+  selector: 'app-driver-selectable',
+  templateUrl: './driver-selectable.component.html',
+  styleUrls: ['./driver-selectable.component.scss'],
   providers:[USER_PROFILE_VALUE_ACCESSOR]
 })
-export class PersonSelectableComponent implements OnInit, ControlValueAccessor {
+export class DriverSelectableComponent implements OnInit, ControlValueAccessor {
 
-  selectedPerson:Person=null;
+  selectedDriver:Driver=null;
   propagateChange = (_: any) => { }
   isDisabled:boolean = false;
 
   constructor(
-    private peopleSvc:PeopleService
+    private driverSvc:DriverService
   ) { }
 
 
   async writeValue(obj: any) {
     try {
-      this.selectedPerson = await this.peopleSvc.getPersonById(obj);  
+      this.selectedDriver = await this.driverSvc.getDriverById(obj);  
     } catch (error) {
       console.log("No se ha podido recupera los datos: "+error);
     }
@@ -49,14 +49,14 @@ export class PersonSelectableComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {}
 
-  getPeople(){
-    return this.peopleSvc.getPeople();
+  getDrivers(){
+    return this.driverSvc.getDrivers();
   } 
 
-  onPersonClicked(person:Person, accordion:IonAccordionGroup){
-    this.selectedPerson = person;
+  onDriverClicked(d:Driver, accordion:IonAccordionGroup){
+    this.selectedDriver = d;
     accordion.value='';
-    this.propagateChange(this.selectedPerson.docId);
+    this.propagateChange(this.selectedDriver.docId);
   }
 
 }

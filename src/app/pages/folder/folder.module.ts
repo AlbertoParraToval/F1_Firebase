@@ -4,11 +4,8 @@ import { FolderPageRoutingModule } from './folder-routing.module';
 import { FolderPage } from './folder.page';
 import { HomeComponent } from './components/home/home.component';
 import { TeamsComponent } from './components/teams/teams.component';
-import { PeopleComponent } from './components/people/people.component';
-import { PersonComponent } from '../../core/components/person/person.component';
-import { PersonDetailComponent } from '../../core/components/person-detail/person-detail.component';
-import { AssignmentComponent } from '../../core/components/assignment/assignment.component';
-import { AssignmentsComponent } from './components/assignments/assignments.component';
+import { DriversComponent } from './components/drivers/drivers.component';
+import { ManagementsComponent } from './components/Managements/managements.component';
 import { CoreModule } from '../../core/core.module';
 
 import { FullCalendarModule } from '@fullcalendar/angular';
@@ -45,9 +42,9 @@ FullCalendarModule.registerPlugins([
   declarations: [
     FolderPage, 
     HomeComponent, 
-    AssignmentsComponent,
+    ManagementsComponent,
     TeamsComponent, 
-    PeopleComponent,
+    DriversComponent,
     AboutmeComponent
     ]
 })

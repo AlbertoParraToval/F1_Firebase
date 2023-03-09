@@ -15,11 +15,12 @@
   </ion-header>
   
   <app-home *ngIf="folder=='Home'"></app-home>
-  <app-people *ngIf="folder=='People'"></app-people>
+  <app-driver *ngIf="folder=='Driver'"></app-driver>
   <app-teams *ngIf="folder=='Teams'"></app-teams>
-  <app-assignments *ngIf="folder=='Assignments'"></app-assignments>
+  <app-managements *ngIf="folder=='Managements'"></app-managements>
   <app-aboutme *ngIf="folder=='aboutme'"></app-aboutme>
   
+
   <ion-fab *ngIf=" folder!='Home'" vertical="bottom" horizontal="start" slot="fixed" >
     <ion-fab-button (click)="onNewItem()" color="dark">
       <ion-icon name="add"></ion-icon>

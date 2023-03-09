@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { AssignmentsService } from 'src/app/core/services/assignments.service';
-import { PersonDetailComponent } from 'src/app/core/components/person-detail/person-detail.component';
-import { PeopleService } from 'src/app/core/services/people.service';
-import { Person } from 'src/app/core/models/person.model';
+import { ManageService } from 'src/app/core/services/manage.service';
+import { DriverDetailComponent} from 'src/app/core/components/driver-detail/driver-detail.component';
+import { DriverService} from 'src/app/core/services/driver.service';
+import { Driver } from 'src/app/core/models/drivers.model';
 import { HttpClientProvider } from 'src/app/core/services/http-client.provider';
 
 @Component({
-  selector: 'app-people',
-  templateUrl: './people.component.html',
-  styleUrls: ['./people.component.scss'],
+  selector: 'app-drivers',
+  templateUrl: './drivers.component.html',
+  styleUrls: ['./drivers.component.scss'],
 })
-export class PeopleComponent implements OnInit {
+export class DriversComponent implements OnInit {
 
   constructor(
-    private peopleSvc:PeopleService,
-    private assignmentsSvc:AssignmentsService,
+    private driversSvc:DriverService,
+    private ManagesSvc:ManageService,
     private modal:ModalController,
     private alert:AlertController,
     private api:HttpClientProvider
@@ -25,15 +25,15 @@ export class PeopleComponent implements OnInit {
 
   }
 
-  getPeople(){
-    return this.peopleSvc._people$;
+  getDrivers(){
+    return this.driversSvc._driver$;
   }
 
-  async presentPersonForm(person:Person){
+  async presentDriverForm(driver:Driver){
     const modal = await this.modal.create({
-      component:PersonDetailComponent,
+      component:DriverDetailComponent,
       componentProps:{
-        person:person
+        d:driver
       },
       cssClass:"modal-full-right-side"
     });
@@ -42,10 +42,10 @@ export class PeopleComponent implements OnInit {
       if(result && result.data){
         switch(result.data.mode){
           case 'New':
-            this.peopleSvc.addPerson(result.data.person);
+            this.driversSvc.addDriver(result.data.driver);
             break;
           case 'Edit':
-            this.peopleSvc.updatePerson(result.data.person);
+            this.driversSvc.updateDriver(result.data.driver);
             break;
           default:
         }
@@ -53,11 +53,11 @@ export class PeopleComponent implements OnInit {
     });
   }
 
-  onEditPerson(person){
-    this.presentPersonForm(person);
+  onEditDriver(driver){
+    this.presentDriverForm(driver);
   }
 
-  async onDeleteAlert(person){
+  async onDeleteAlert(driver){
     const alert = await this.alert.create({
       header:'Atención',
       message: '¿Está seguro de que desear borrar a la persona?',
@@ -73,7 +73,7 @@ export class PeopleComponent implements OnInit {
           text: 'Borrar',
           role: 'confirm',
           handler: () => {
-            this.peopleSvc.deletePerson(person);
+            this.driversSvc.deleteDriver(driver);
           },
         },
       ],
@@ -84,7 +84,7 @@ export class PeopleComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
-  async onPersonExistsAlert(task){
+  async onDriverExistsAlert(task){
     const alert = await this.alert.create({
       header: 'Error',
       message: 'No es posible borrar la persona porque está asignada a una tarea',
@@ -93,7 +93,7 @@ export class PeopleComponent implements OnInit {
           text: 'Cerrar',
           role: 'close',
           handler: () => {
-           
+          
           },
         },
       ],
@@ -104,13 +104,10 @@ export class PeopleComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
-  async onDeletePerson(person){
-     if((await this.assignmentsSvc.getAssignmentsByPersonId(person.id)).length==0)
-     this.onDeleteAlert(person);
+  async onDeleteDriver(driver){
+      if((await this.ManagesSvc.getManagesByDriverId(driver.id)).length==0)
+      this.onDeleteAlert(driver);
     else
-      this.onPersonExistsAlert(person);
-   
-    
+      this.onDriverExistsAlert(driver);
   }
-
 }

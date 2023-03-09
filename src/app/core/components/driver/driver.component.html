@@ -1,22 +1,22 @@
 <ion-item-sliding #sliding [disabled]="!isLowResolution()">
   <ion-item>
-    <ion-avatar *ngIf="person" class="person">
-      <img *ngIf="!person.picture" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      <img *ngIf="person.picture" alt="Person picture" [src]="person.picture" />
+    <ion-avatar *ngIf="" class="driver">
+      <img *ngIf="!driver.picture" alt="Silhouette of a driver's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      <img *ngIf="driver.picture" alt="driver picture" [src]="driver.picture" />
     </ion-avatar>
-    <ion-label>{{person.last_name}}, {{person.first_name}}</ion-label>
+    <ion-label>{{driver.last_name}}, {{driver.first_name}}</ion-label>
     <ion-button class="item-expanded" *ngIf="!isLowResolution()" slot="end" fill="clear" (click)="onEditClick(sliding)">
       <div class="vertical">
         <ion-icon name="create" ></ion-icon>
         {{'modal.edit' | translate | uppercase}}
       </div>
     </ion-button>
-    <!--<ion-button class="item-expanded" *ngIf="!isLowResolution()" slot="end" fill="clear" color="danger" (click)="onDeleteClick(sliding)">
+    <ion-button class="item-expanded" *ngIf="!isLowResolution()" slot="end" fill="clear" color="danger" (click)="onDeleteClick(sliding)">
       <div class="vertical">
         <ion-icon name="trash" ></ion-icon>
         {{'Borrar' | uppercase}}
       </div>
-    </ion-button>-->
+    </ion-button>
   </ion-item>
 
   <ion-item-options >

@@ -1,0 +1,3 @@
+<ion-list>
+  <app-driver *ngFor="let drivers of (getDrivers() | async)" [driver]="drivers" (onEdit)="onEditDriver($event)" (onDelete)="onDeleteDriver($event)"></app-driver>
+</ion-list>

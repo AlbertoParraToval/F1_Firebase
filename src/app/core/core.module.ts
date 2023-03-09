@@ -1,13 +1,11 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
-import { PersonComponent, TeamComponent, TeamDetailComponent } from '.'
+import { DriverComponent,  ManageComponent,  ManageDetailComponent,  TeamComponent, TeamDetailComponent } from '.'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule, Platform } from '@ionic/angular';
-import { PersonDetailComponent,  AssignmentComponent, AssignmentDetailComponent } from '.';
-import { PersonSelectableComponent } from './components/person-selectable/person-selectable.component';
+import { DriverDetailComponent, } from '.';
+import { DriverSelectableComponent } from './components/driver-selectable/driver-selectable.component';
 import {  TeamSelectableComponent } from './components/team-selectable/team-selectable.component';
-import { DateTimeSelectableComponent } from './components/date-time-selectable/date-time-selectable.component';
-import { AssignmentScheduleComponent } from './components/assignment-schedule/assignment-schedule.component';
 import es from '@angular/common/locales/es';
 import en from '@angular/common/locales/en';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -23,17 +21,14 @@ registerLocaleData(es);
 
 @NgModule({
   declarations: [
-    PersonComponent,
-    PersonDetailComponent,
+    DriverComponent,
+    DriverDetailComponent,
     TeamComponent,
     TeamDetailComponent,
-    AssignmentComponent,
-    AssignmentDetailComponent,
-    PersonSelectableComponent,
+    DriverSelectableComponent,
     TeamSelectableComponent,
-    DateTimeSelectableComponent,
-    AssignmentScheduleComponent
-
+    ManageComponent,
+    ManageDetailComponent
   ],
   imports: [
     CommonModule,
@@ -58,17 +53,15 @@ registerLocaleData(es);
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    PersonComponent,
-    PersonDetailComponent,
+    DriverComponent,
+    DriverDetailComponent,
     TeamComponent,
     TeamDetailComponent,
-    AssignmentComponent,
-    AssignmentDetailComponent,
-    PersonSelectableComponent,
+    DriverSelectableComponent,
     TeamSelectableComponent,
-    DateTimeSelectableComponent,
-    AssignmentScheduleComponent,
     HttpClientModule,
+    ManageComponent,
+    ManageDetailComponent
 
   ],
   providers:[

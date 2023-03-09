@@ -1,6 +1,7 @@
-export * from './person/person.component';
-export * from "./person-detail/person-detail.component";
+
+export * from "./driver-detail/driver-detail.component";
 export * from "./team/team.component"
 export * from "./team-detail/team-detail.component";
-export * from './assignment/assignment.component';
-export * from './assignment-detail/assignment-detail.component';
+export * from './manage/manage.component';
+export * from './manage-detail/manage-detail.component';
+export * from "./driver/driver.component"

@@ -1,4 +1,4 @@
-export interface Person {
+export interface Driver {
     id:number;
     docId?:string;
     first_name:string;

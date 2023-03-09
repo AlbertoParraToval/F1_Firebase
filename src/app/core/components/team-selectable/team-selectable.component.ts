@@ -1,7 +1,7 @@
 import { Component, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IonAccordionGroup } from '@ionic/angular';
-import { Person, Team } from '../../models';
+import { Driver, Team } from '../../models';
 import { TeamsService } from '../../services';
 
 

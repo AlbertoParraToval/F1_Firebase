@@ -1,33 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { Assignment } from 'src/app/core/models/assignment.model';
-import { AssignmentsService } from 'src/app/core/services/assignments.service';
-import { AssignmentDetailComponent } from '../../../../core/components/assignment-detail/assignment-detail.component';
+import { ManageDetailComponent, ManageService } from 'src/app/core';
+import { Manage } from 'src/app/core/models/Manage.model';
+
 
 @Component({
-  selector: 'app-assignments',
-  templateUrl: './assignments.component.html',
-  styleUrls: ['./assignments.component.scss'],
+  selector: 'app-managements',
+  templateUrl: './managements.component.html',
+  styleUrls: ['./managements.component.scss'],
 })
-export class AssignmentsComponent implements OnInit {
+export class ManagementsComponent implements OnInit {
 
   constructor(
-    private assignmentsSvc:AssignmentsService,
+    private manageSvc:ManageService,
     private modal:ModalController,
     private alert:AlertController
   ) { }
 
   ngOnInit() {}
 
-  getAssignments(){
-    return this.assignmentsSvc.assignments$;
+  getManages(){
+    return this.manageSvc.Manages$;
   }
 
-  async presentAssignmentForm(assignment:Assignment){
+  async presentManageForm(manage:Manage){
     const modal = await this.modal.create({
-      component:AssignmentDetailComponent,
+      component:ManageDetailComponent,
       componentProps:{
-        assignment:assignment
+        m:manage
       },
       cssClass:"modal-full-right-side"
     });
@@ -36,10 +36,10 @@ export class AssignmentsComponent implements OnInit {
       if(result && result.data){
         switch(result.data.mode){
           case 'New':
-            this.assignmentsSvc.addAssignment(result.data.assignment);
+            this.manageSvc.addManage(result.data.Manage);
             break;
           case 'Edit':
-            this.assignmentsSvc.updateAssignment(result.data.assignment);
+            this.manageSvc.updateManage(result.data.Manage);
             break;
           default:
         }
@@ -47,11 +47,11 @@ export class AssignmentsComponent implements OnInit {
     });
   }
 
-  onEditAssignment(assignment){
-    this.presentAssignmentForm(assignment);
+  onEditManage(Manage){
+    this.presentManageForm(Manage);
   }
 
-  async onDeleteAlert(assignment){
+  async onDeleteAlert(Manage){
     const alert = await this.alert.create({
       header: '¿Está seguro de que desear borrar la asignación de tarea?',
       buttons: [
@@ -66,7 +66,7 @@ export class AssignmentsComponent implements OnInit {
           text: 'Borrar',
           role: 'confirm',
           handler: () => {
-            this.assignmentsSvc.deleteAssignmentById(assignment.id);
+            this.manageSvc.deleteManageById(Manage.id);
           },
         },
       ],
@@ -77,8 +77,8 @@ export class AssignmentsComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
-  onDeleteAssignment(assignment){
-   this.onDeleteAlert(assignment);
+  onDeleteManage(Manage){
+    this.onDeleteAlert(Manage);
     
   }
 

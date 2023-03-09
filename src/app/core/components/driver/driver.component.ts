@@ -1,27 +1,28 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { isLowResolution as lowres} from 'src/app/utils/screen.utils';
 import { IonItemSliding } from '@ionic/angular';
-import { Person, PeopleService } from 'src/app/core';
+import { Driver, DriverService} from 'src/app/core';
 
 @Component({
-  selector: 'app-person',
-  templateUrl: './person.component.html',
-  styleUrls: ['./person.component.scss'],
+  selector: 'app-driver',
+  templateUrl: './driver.component.html',
+  styleUrls: ['./driver.component.scss'],
 })
-export class PersonComponent implements OnInit {
+export class DriverComponent implements OnInit {
 
-  private _person:Person;
+  private _driver:Driver;
   @Output() onEdit = new EventEmitter;
   @Output() onDelete = new EventEmitter;
-  @Input() set person(p:Person){
-    this._person = p;
+  @Input() set driver(d:Driver){
+    this._driver = d;
   }
-  get person(){
-    return this._person;
+  getDriver(){
+    return this.driver;
   }
   isLowResolution:()=>boolean = lowres;
+  
   constructor(
-    private peopleSvc:PeopleService
+    private driverSvc:DriverService
   ){
 
   }
@@ -33,12 +34,12 @@ export class PersonComponent implements OnInit {
 
   onEditClick(slide:IonItemSliding){
     slide.close();
-    this.onEdit.emit(this.person);
+    this.onEdit.emit(this.driver);
   }
 
   onDeleteClick(slide:IonItemSliding){
     slide.close();
-    this.onDelete.emit(this.person);
+    this.onDelete.emit(this.driver);
   }
 
 }

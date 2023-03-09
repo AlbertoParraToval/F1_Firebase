@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { AssignmentsService } from 'src/app/core/services/assignments.service';
+import { ManageService } from 'src/app/core/services/manage.service';
 import {  TeamDetailComponent } from '../../../../core/components/team-detail/team-detail.component';
 import {  TeamsService } from 'src/app/core/services/teams.service';
 import { Team} from 'src/app/core/models/teams.model';
@@ -16,7 +16,7 @@ export class TeamsComponent implements OnInit {
     private alert:AlertController,
     private modal:ModalController,
     private TeamsSvc:TeamsService,
-    private assignmentsSvc:AssignmentsService
+    private manageSvc:ManageService
   ) { }
 
   ngOnInit() {}
@@ -102,7 +102,7 @@ export class TeamsComponent implements OnInit {
   
   async onDeleteTeam(Team){
     
-    if((await this.assignmentsSvc.getAssignmentsByTaskId(Team.docId)).length==0)
+    if((await this.manageSvc.getManagesByTeamId(Team.docId)).length==0)
       this.onDeleteAlert(Team);
     else
       this.onTeamExistsAlert(Team);

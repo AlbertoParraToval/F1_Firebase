@@ -4,11 +4,11 @@ import { ModalController } from '@ionic/angular';
 import { UserService } from 'src/app/core/services/user.service';
 import { environment } from 'src/environments/environment';
 
-import { AssignmentDetailComponent } from '../../core/components/assignment-detail/assignment-detail.component';
-import { PersonDetailComponent } from '../../core/components/person-detail/person-detail.component';
+import { ManageDetailComponent } from '../../core/components/manage-detail/manage-detail.component';
+import { DriverDetailComponent } from '../../core/components/driver-detail/driver-detail.component';
 import { TeamDetailComponent } from '../../core/components/team-detail/team-detail.component';
-import { AssignmentsService } from '../../core/services/assignments.service';
-import { PeopleService } from '../../core/services/people.service';
+import {  ManageService } from '../../core/services/manage.service';
+import { DriverService } from '../../core/services/driver.service';
 import { TeamsService } from '../../core/services/teams.service';
 
 @Component({
@@ -23,9 +23,9 @@ export class FolderPage implements OnInit {
 
   constructor(
     public user:UserService,
-    private peopleSvc:PeopleService,
+    private driversSvc:DriverService,
     private teamsSvc:TeamsService,
-    private assignmentsSvc:AssignmentsService,
+    private manageSvc:ManageService,
     private modal:ModalController,
     private activatedRoute: ActivatedRoute,
     private router:Router) { }
@@ -52,9 +52,9 @@ export class FolderPage implements OnInit {
       
       case 'Home':
         break;
-      case 'People':
-        this.presentForm(PersonDetailComponent, (data)=>{
-          this.peopleSvc.addPerson(data.person);
+      case 'Drivers':
+        this.presentForm(DriverDetailComponent, (data)=>{
+          this.driversSvc.addDriver(data.driver);
         });
         break;
       case 'Teams':
@@ -63,10 +63,10 @@ export class FolderPage implements OnInit {
           this.teamsSvc.addteam(data.team);
         });
         break;
-      case 'Assignments':
+      case 'Managements':
         
-        this.presentForm(AssignmentDetailComponent, (data)=>{
-          this.assignmentsSvc.addAssignment(data.assignment);
+        this.presentForm(ManageDetailComponent, (data)=>{
+          this.manageSvc.addManage(data.manage);
         });
         break;
       case 'Task Panel':
