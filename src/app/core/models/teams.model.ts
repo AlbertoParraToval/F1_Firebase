@@ -1,7 +1,7 @@
-export interface Task {
+export interface Team {
     id:number;
     docId?:string;
     name:string;
-    durationInSecs:number;
+    description:string;
     picture:string;
 }

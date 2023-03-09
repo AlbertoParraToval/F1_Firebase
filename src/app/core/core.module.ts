@@ -1,11 +1,11 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
-import { PersonComponent } from '.'
+import { PersonComponent, TeamComponent, TeamDetailComponent } from '.'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule, Platform } from '@ionic/angular';
-import { PersonDetailComponent, TaskComponent, TaskDetailComponent, AssignmentComponent, AssignmentDetailComponent } from '.';
+import { PersonDetailComponent,  AssignmentComponent, AssignmentDetailComponent } from '.';
 import { PersonSelectableComponent } from './components/person-selectable/person-selectable.component';
-import { TaskSelectableComponent } from './components/task-selectable/task-selectable.component';
+import {  TeamSelectableComponent } from './components/team-selectable/team-selectable.component';
 import { DateTimeSelectableComponent } from './components/date-time-selectable/date-time-selectable.component';
 import { AssignmentScheduleComponent } from './components/assignment-schedule/assignment-schedule.component';
 import es from '@angular/common/locales/es';
@@ -25,12 +25,12 @@ registerLocaleData(es);
   declarations: [
     PersonComponent,
     PersonDetailComponent,
-    TaskComponent,
-    TaskDetailComponent,
+    TeamComponent,
+    TeamDetailComponent,
     AssignmentComponent,
     AssignmentDetailComponent,
     PersonSelectableComponent,
-    TaskSelectableComponent,
+    TeamSelectableComponent,
     DateTimeSelectableComponent,
     AssignmentScheduleComponent
 
@@ -48,7 +48,7 @@ registerLocaleData(es);
       }
       }),
     IonicStorageModule.forRoot({
-      name: '__tareandodb',
+      name: '__f1Firebase',
           driverOrder: [Drivers.IndexedDB, Drivers.LocalStorage]
     }),
     ReactiveFormsModule
@@ -60,12 +60,12 @@ registerLocaleData(es);
     ReactiveFormsModule,
     PersonComponent,
     PersonDetailComponent,
-    TaskComponent,
-    TaskDetailComponent,
+    TeamComponent,
+    TeamDetailComponent,
     AssignmentComponent,
     AssignmentDetailComponent,
     PersonSelectableComponent,
-    TaskSelectableComponent,
+    TeamSelectableComponent,
     DateTimeSelectableComponent,
     AssignmentScheduleComponent,
     HttpClientModule,

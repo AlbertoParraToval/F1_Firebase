@@ -1,34 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { AssignmentsService } from 'src/app/core/services/assignments.service';
-import { TaskDetailComponent } from '../../../../core/components/task-detail/task-detail.component';
-import { TasksService } from 'src/app/core/services/tasks.service';
-import { Task } from 'src/app/core/models/task.model';
+import {  TeamDetailComponent } from '../../../../core/components/team-detail/team-detail.component';
+import {  TeamsService } from 'src/app/core/services/teams.service';
+import { Team} from 'src/app/core/models/teams.model';
 
 @Component({
-  selector: 'app-tasks',
-  templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.scss'],
+  selector: 'app-teams',
+  templateUrl: './teams.component.html',
+  styleUrls: ['./teams.component.scss'],
 })
-export class TasksComponent implements OnInit {
+export class TeamsComponent implements OnInit {
 
   constructor(
     private alert:AlertController,
     private modal:ModalController,
-    private tasksSvc:TasksService,
+    private TeamsSvc:TeamsService,
     private assignmentsSvc:AssignmentsService
   ) { }
 
   ngOnInit() {}
-  getTasks(){
-    return this.tasksSvc.tasks$;
+  getTeams(){
+    return this.TeamsSvc.teams$;
   }
 
-  async presentTaskForm(task:Task){
+  async presentTeamForm(teamdata:Team){
     const modal = await this.modal.create({
-      component:TaskDetailComponent,
+      component:TeamDetailComponent,
       componentProps:{
-        task:task
+        team:teamdata
       },
       cssClass:"modal-full-right-side"
     });
@@ -37,10 +37,10 @@ export class TasksComponent implements OnInit {
       if(result && result.data){
         switch(result.data.mode){
           case 'New':
-            this.tasksSvc.addTask(result.data.task);
+            this.TeamsSvc.addteam(result.data.team);
             break;
           case 'Edit':
-            this.tasksSvc.updateTask(result.data.task);
+            this.TeamsSvc.updateteam(result.data.team);
             break;
           default:
         }
@@ -48,11 +48,11 @@ export class TasksComponent implements OnInit {
     });
   }
 
-  onEditTask(task){
-    this.presentTaskForm(task);
+  onEditTeam(team){
+    this.presentTeamForm(team);
   }
 
-  async onDeleteAlert(task){
+  async onDeleteAlert(Team){
 
     const alert = await this.alert.create({
       header: 'Atención',
@@ -69,7 +69,7 @@ export class TasksComponent implements OnInit {
           text: 'Borrar',
           role: 'confirm',
           handler: () => {
-            this.tasksSvc.deleteTask(task);
+            this.TeamsSvc.deleteTeam(Team);
           },
         },
       ],
@@ -80,7 +80,7 @@ export class TasksComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
-  async onTaskExistsAlert(task){
+  async onTeamExistsAlert(Team){
     const alert = await this.alert.create({
       header: 'Error',
       message: 'No es posible borrar la tarea porque está asignada a una persona',
@@ -89,7 +89,7 @@ export class TasksComponent implements OnInit {
           text: 'Cerrar',
           role: 'close',
           handler: () => {
-           
+          
           },
         },
       ],
@@ -100,16 +100,16 @@ export class TasksComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
   
-  async onDeleteTask(task){
+  async onDeleteTeam(Team){
     
-    if((await this.assignmentsSvc.getAssignmentsByTaskId(task.docId)).length==0)
-      this.onDeleteAlert(task);
+    if((await this.assignmentsSvc.getAssignmentsByTaskId(Team.docId)).length==0)
+      this.onDeleteAlert(Team);
     else
-      this.onTaskExistsAlert(task);
+      this.onTeamExistsAlert(Team);
   }
 
   async onExport(){
-    this.tasksSvc.writeToFile();
+    this.TeamsSvc.writeToFile();
   }
 
 }

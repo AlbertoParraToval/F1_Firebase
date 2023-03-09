@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { Assignment } from 'src/app/core/models/assignment.model';
 import { AssignmentsService } from 'src/app/core/services/assignments.service';
-import { TasksService } from 'src/app/core/services/tasks.service';
+import {  TeamsService } from 'src/app/core/services/teams.service';
 import { PeopleService } from 'src/app/core/services/people.service';
 import { Person } from '../../models';
 import { TranslateService } from '@ngx-translate/core';
@@ -32,7 +32,7 @@ export class AssignmentDetailComponent implements OnInit {
 
   
   constructor(
-    private tasksSvc:TasksService,
+    private tasksSvc:TeamsService,
     private peopleSvc:PeopleService,
     private assignmentsSvc:AssignmentsService,
     private fb:FormBuilder,

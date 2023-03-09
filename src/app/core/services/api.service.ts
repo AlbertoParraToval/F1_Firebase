@@ -55,7 +55,7 @@ export class ApiService {
     var url = `${environment.api_url}${path}`;
     return this.http.post(url,body, this.getHeader(url));
   }
-   
+  
   patch(path: string, body: Object = {}): Observable<any> {
     var url = `${environment.api_url}${path}`;
     return this.http.patch(url, body, this.getHeader(url));

@@ -1,0 +1,3 @@
+<ion-list>
+  <app-team *ngFor="let teams of (getTeams() | async)" [team]="teams" (onEdit)="onEditTeam($event)" (onDelete)="onDeleteTeam($event)"></app-team>
+</ion-list>

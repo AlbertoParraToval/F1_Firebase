@@ -63,10 +63,10 @@
         "nickname-placeholder":"Type the nickname"
     },
     "task-detail":{
-        "title":"Task detail",
+        "title":"Team info",
         "name":"Name",
-        "name-placeholder":"Type a name for the task",
-        "duration":"Duration"
+        "name-placeholder":"Type a name for the team",
+        "duration":"Description"
     },
 
     "information":{

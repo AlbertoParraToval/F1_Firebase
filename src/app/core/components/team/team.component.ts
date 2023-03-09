@@ -1,18 +1,18 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { isLowResolution as lowres} from 'src/app/utils/screen.utils';
 import { IonItemSliding } from '@ionic/angular';
-import { Task } from 'src/app/core/models/task.model';
+import {  Team } from 'src/app/core/models/teams.model';
 
 @Component({
-  selector: 'app-task',
-  templateUrl: './task.component.html',
-  styleUrls: ['./task.component.scss'],
+  selector: 'app-team',
+  templateUrl: './team.component.html',
+  styleUrls: ['./team.component.scss'],
 })
-export class TaskComponent implements OnInit {
+export class TeamComponent implements OnInit {
 
   @Output() onEdit = new EventEmitter;
   @Output() onDelete = new EventEmitter;
-  @Input() task:Task;
+  @Input() team:Team;
   isLowResolution = lowres;
   constructor() { }
 
@@ -20,11 +20,11 @@ export class TaskComponent implements OnInit {
 
   onEditClick(slide:IonItemSliding){
     slide.close();
-    this.onEdit.emit(this.task);
+    this.onEdit.emit(this.team);
   }
 
   onDeleteClick(slide:IonItemSliding){
     slide.close();
-    this.onDelete.emit(this.task);
+    this.onDelete.emit(this.team);
   }
 }

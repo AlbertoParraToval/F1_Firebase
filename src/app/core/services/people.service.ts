@@ -20,7 +20,7 @@ export class PeopleService{
     private api:ApiService,
     private firebase:FirebaseService
   ) {
-    this.unsubscr = this.firebase.subscribeToCollection('usuarios',this._peopleSubject, this.mapPeople);
+    this.unsubscr = this.firebase.subscribeToCollection('drivers',this._peopleSubject, this.mapPeople);
   }
 
   ngOnDestroy(): void {
@@ -46,7 +46,7 @@ export class PeopleService{
   getPersonById(id:string):Promise<Person>{
     return new Promise<Person>(async (resolve, reject)=>{
       try {
-        var task = (await this.firebase.getDocument('usuarios', id));
+        var task = (await this.firebase.getDocument('drivers', id));
         resolve({
           id:0,
           docId:task.id,
@@ -63,7 +63,7 @@ export class PeopleService{
 
   async deletePerson(person:Person){
     try {
-      await this.firebase.deleteDocument('usuarios', person.docId);  
+      await this.firebase.deleteDocument('drivers', person.docId);  
     } catch (error) {
       console.log(error);
     }
@@ -81,7 +81,7 @@ export class PeopleService{
       _person['picture'] = response.image;
     }
     try {
-      await this.firebase.createDocument('usuarios', _person);  
+      await this.firebase.createDocument('drivers', _person);  
     } catch (error) {
       console.log(error);
     }
@@ -110,7 +110,7 @@ export class PeopleService{
       _person['picture'] = response.file;
     }
     try {
-      await this.firebase.updateDocument('usuarios', person.docId, _person);  
+      await this.firebase.updateDocument('drivers', person.docId, _person);  
     } catch (error) {
       console.log(error);
     }

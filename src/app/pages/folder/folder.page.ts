@@ -6,10 +6,10 @@ import { environment } from 'src/environments/environment';
 import { ApiService } from '../../core';
 import { AssignmentDetailComponent } from '../../core/components/assignment-detail/assignment-detail.component';
 import { PersonDetailComponent } from '../../core/components/person-detail/person-detail.component';
-import { TaskDetailComponent } from '../../core/components/task-detail/task-detail.component';
+import { TeamDetailComponent } from '../../core/components/team-detail/team-detail.component';
 import { AssignmentsService } from '../../core/services/assignments.service';
 import { PeopleService } from '../../core/services/people.service';
-import { TasksService } from '../../core/services/tasks.service';
+import { TeamsService } from '../../core/services/teams.service';
 
 @Component({
   selector: 'app-folder',
@@ -25,7 +25,7 @@ export class FolderPage implements OnInit {
     public user:UserService,
     private api:ApiService,
     private peopleSvc:PeopleService,
-    private tasksSvc:TasksService,
+    private teamsSvc:TeamsService,
     private assignmentsSvc:AssignmentsService,
     private modal:ModalController,
     private activatedRoute: ActivatedRoute,
@@ -50,6 +50,7 @@ export class FolderPage implements OnInit {
 
   onNewItem(){
     switch(this.folder){
+      
       case 'Home':
         break;
       case 'People':
@@ -57,9 +58,10 @@ export class FolderPage implements OnInit {
           this.peopleSvc.addPerson(data.person);
         });
         break;
-      case 'Tasks':
-        this.presentForm(TaskDetailComponent, (data)=>{
-          this.tasksSvc.addTask(data.task);
+      case 'Teams':
+        
+        this.presentForm(TeamDetailComponent, (data)=>{
+          this.teamsSvc.addteam(data.team);
         });
         break;
       case 'Assignments':

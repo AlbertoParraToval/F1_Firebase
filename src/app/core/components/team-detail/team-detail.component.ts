@@ -2,31 +2,31 @@ import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
-import { Task } from 'src/app/core/models/task.model';
+import { Team} from 'src/app/core/models/teams.model';
 import { PhotoItem, PhotoService } from '../../services/photo.service';
 import { PlatformService } from '../../services/platform.service';
 
 @Component({
-  selector: 'app-task-detail',
-  templateUrl: './task-detail.component.html',
-  styleUrls: ['./task-detail.component.scss'],
+  selector: 'app-team-detail',
+  templateUrl: './team-detail.component.html',
+  styleUrls: ['./team-detail.component.scss'],
 })
-export class TaskDetailComponent implements OnInit {
+export class TeamDetailComponent implements OnInit {
 
   form:FormGroup;
   mode:"New" | "Edit" = "New";
   currentImage = new BehaviorSubject<string>("");
   currentImage$ = this.currentImage.asObservable();
-  @Input('task') set task(task:Task){
-    if(task){
-      this.form.controls.id.setValue(task.id);
-      this.form.controls.docId.setValue(task.docId);
-      this.form.controls.name.setValue(task.name);
-      this.form.controls.picture.setValue(task.picture);
-      this.form.controls.durationInSecs.setValue(task.durationInSecs);
-      this.form.controls.picture.setValue(task.picture);
-      if(task.picture)
-        this.currentImage.next(task.picture);
+  @Input('team') set team(team:Team){
+    if(team){
+      this.form.controls.id.setValue(team.id);
+      this.form.controls.docId.setValue(team.docId);
+      this.form.controls.name.setValue(team.name);
+      this.form.controls.picture.setValue(team.picture);
+      this.form.controls.description.setValue(team.description);
+      this.form.controls.picture.setValue(team.picture);
+      if(team.picture)
+        this.currentImage.next(team.picture);
       this.mode = "Edit";
     }
   }
@@ -44,7 +44,7 @@ export class TaskDetailComponent implements OnInit {
       docId:[''],
       name:['', [Validators.required]],
       picture:[''],
-      durationInSecs:[0, [Validators.required]],
+      description:[0, [Validators.required]],
       pictureFile:[null]
     });
   }
@@ -55,7 +55,7 @@ export class TaskDetailComponent implements OnInit {
 
   onSubmit(){
     
-    this.modal.dismiss({task: this.form.value, mode:this.mode}, 'ok');
+    this.modal.dismiss({team: this.form.value, mode:this.mode}, 'ok');
   }
 
   onDismiss(result){

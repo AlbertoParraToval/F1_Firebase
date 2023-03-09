@@ -1,39 +1,39 @@
 import { Component, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IonAccordionGroup } from '@ionic/angular';
-import { Person, Task } from '../../models';
-import { TasksService } from '../../services';
+import { Person, Team } from '../../models';
+import { TeamsService } from '../../services';
 
 
 export const TASK_PROFILE_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => TaskSelectableComponent),
+  useExisting: forwardRef(() => TeamSelectableComponent),
   multi: true
 };
 
 
 @Component({
-  selector: 'app-task-selectable',
-  templateUrl: './task-selectable.component.html',
-  styleUrls: ['./task-selectable.component.scss'],
+  selector: 'app-team-selectable',
+  templateUrl: './team-selectable.component.html',
+  styleUrls: ['./team-selectable.component.scss'],
   providers:[TASK_PROFILE_VALUE_ACCESSOR]
 })
-export class TaskSelectableComponent implements OnInit, ControlValueAccessor {
+export class TeamSelectableComponent implements OnInit, ControlValueAccessor {
 
-  selectedTask:Task=null;
+  selectedTeam:Team=null;
   propagateChange = (_: any) => { }
   isDisabled:boolean = false;
 
   constructor(
-    private tasksSvc:TasksService
+    private tasksSvc:TeamsService
   ) { }
 
 
   async writeValue(obj: any) {
     try {
-      this.selectedTask = await this.tasksSvc.getTaskById(obj);
+      this.selectedTeam = await this.tasksSvc.getteamById(obj);
     } catch (error) {
-      console.log("No se ha podido recupera los datos: "+error);
+      console.log("No se ha podido recupera los datos: "+ error);
     }
   }
   registerOnChange(fn: any): void {
@@ -48,14 +48,14 @@ export class TaskSelectableComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {}
 
-  getTasks(){
-    return this.tasksSvc.getTasks();
+  getTeams(){
+    return this.tasksSvc.getteams();
   } 
 
-  onTaskClicked(task:Task, accordion:IonAccordionGroup){
-    this.selectedTask = task;
+  onTaskClicked(teamdata:Team, accordion:IonAccordionGroup){
+    this.selectedTeam = teamdata;
     accordion.value='';
-    this.propagateChange(this.selectedTask.docId);
+    this.propagateChange(this.selectedTeam.docId);
   }
 
 }
