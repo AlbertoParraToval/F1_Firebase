@@ -4,11 +4,11 @@ import { ModalController } from '@ionic/angular';
 import { PasswordValidation } from 'src/app/core/utils/password-validator';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
 })
-export class SignupComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
   form:FormGroup;
   constructor(
@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit {
   }
   
   errorsToArray(errors){
-   
+  
     if(errors && !('required' in errors))
       return [Object.keys(errors)[0]];
     else

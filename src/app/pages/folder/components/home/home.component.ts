@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -40,4 +39,7 @@ export class HomeComponent implements OnInit {
     this.minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     this.seconds = Math.floor((diff % (1000 * 60)) / 1000);
   }
+
+
+  
 }

@@ -43,7 +43,7 @@ export function httpProviderFactory(
       deps: [HttpClient]
       }
       }),
-    AppRoutingModule
+    AppRoutingModule,
     
     ],
   providers: [

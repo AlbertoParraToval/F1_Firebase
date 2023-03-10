@@ -4,7 +4,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
 import { SigninComponent } from './components/signin/signin.component';
-import { SignupComponent } from './components/signup/signup.component';
+import { RegisterComponent} from './components/register/register.component';
 import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { CoreModule } from 'src/app/core/core.module';
@@ -22,6 +22,6 @@ import { createTranslateLoader } from 'src/app/core/utils/translate';
       }),
     LoginPageRoutingModule
   ],
-  declarations: [LoginPage, SigninComponent, SignupComponent]
+  declarations: [LoginPage, SigninComponent, RegisterComponent]
 })
 export class LoginPageModule {}

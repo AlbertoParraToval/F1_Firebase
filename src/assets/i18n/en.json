@@ -39,7 +39,7 @@
     },
     "register":{
         "title":"Register",
-        "register":"I want to register",
+        "register":"Without account?, sign up now!",
         "first_name":"First name",
         "last_name":"Last name",
         "email":"Email",

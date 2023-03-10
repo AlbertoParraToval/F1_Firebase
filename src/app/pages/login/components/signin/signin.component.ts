@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { UserService } from 'src/app/core/services/user.service';
-import { SignupComponent } from '../signup/signup.component';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-signin',
@@ -30,7 +30,7 @@ export class SigninComponent implements OnInit {
 
   async register(){
     const modal = await this.modalCtrl.create({
-      component:SignupComponent
+      component:RegisterComponent
     });
 
     modal.onDidDismiss().then(async(response)=>{
