@@ -13,12 +13,12 @@
         "export":"Exportar"
     },
     "folder":{
-        "home":"Inicio",
-        "driver":"Pilotos",
-        "teams":"Equipos",
+        "Home":"Inicio",
+        "Drivers":"Pilotos",
+        "Teams":"Equipos",
         "DriverManage":"Fichajes",
-        "durationContract":"Panel de tareas",
-        "aboutme":"Sobre Mí"
+        "Circuits":"Circuitos",
+        "AboutMe":"Sobre Mí"
     },
     "home":{
         "title":"F1_Firebase",

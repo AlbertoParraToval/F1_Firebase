@@ -1,5 +1,5 @@
 ion-menu ion-content {
-  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+  --background: var(--ion-item-background, var(--ion-background-color, #9c0a0a));
 }
 
 ion-menu.md ion-content {
@@ -7,6 +7,7 @@ ion-menu.md ion-content {
   --padding-end: 8px;
   --padding-top: 20px;
   --padding-bottom: 20px;
+  background-color: rgba(var(--ion-color-danger-rgb), 0.14);
 }
 
 ion-menu.md ion-list {
@@ -15,6 +16,7 @@ ion-menu.md ion-list {
 
 ion-menu.md ion-note {
   margin-bottom: 30px;
+  background-color: rgba(var(--ion-color-danger-rgb), 0.14)
 }
 
 ion-menu.md ion-list-header,
@@ -23,13 +25,13 @@ ion-menu.md ion-note {
 }
 
 ion-menu.md ion-list#inbox-list {
-  border-bottom: 1px solid var(--ion-color-step-150, #895000);
+  border-bottom: 1px solid var(--ion-color-step-150, #ffffff);
 }
 
 ion-menu.md ion-list#inbox-list ion-list-header {
   font-size: 22px;
   font-weight: 600;
-
+  ;
   min-height: 20px;
 }
 
@@ -38,7 +40,7 @@ ion-menu.md ion-list#labels-list ion-list-header {
 
   margin-bottom: 18px;
 
-  color: #757575;
+  color: #000000;
 
   min-height: 26px;
 }
@@ -50,15 +52,15 @@ ion-menu.md ion-item {
 }
 
 ion-menu.md ion-item.selected {
-  --background: rgba(var(--ion-color-primary-rgb), 0.14);
+  --background: rgba(var(--ion-color-danger-rgb), 0.14);
 }
 
 ion-menu.md ion-item.selected ion-icon {
-  color: var(--ion-color-primary);
+  color: var(--ion-color-danger);
 }
 
 ion-menu.md ion-item ion-icon {
-  color: #616e7e;
+  color: #000000;
 }
 
 ion-menu.md ion-item ion-label {
@@ -82,15 +84,16 @@ ion-menu.ios ion-item {
   --padding-start: 16px;
   --padding-end: 16px;
   --min-height: 50px;
+  
 }
 
 ion-menu.ios ion-item.selected ion-icon {
-  color: var(--ion-color-primary);
+  color: var(--ion-color-danger);
 }
 
 ion-menu.ios ion-item ion-icon {
   font-size: 24px;
-  color: #73849a;
+  color: #000000;
 }
 
 ion-menu.ios ion-list#labels-list ion-list-header {
@@ -115,7 +118,7 @@ ion-note {
 }
 
 ion-item.selected {
-  --color: var(--ion-color-primary);
+  --color: var(--ion-color-medium-rgb);
 }
 
 .menu-header{

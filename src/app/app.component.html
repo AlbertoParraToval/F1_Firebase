@@ -6,12 +6,9 @@
   </ion-fab>
   <ion-split-pane  *ngIf="(user.isLogged$ | async)" contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
-      <ion-content color="light">
+      <ion-content color="danger">
+        <ion-img src="./../assets/images/fotos/img2.jpg"></ion-img>
         <ion-list  id="inbox-list">
-          <ion-list-header class="menu-header">
-              <ion-img src="./../assets/images/fotos/img2.jpg"></ion-img>
-          </ion-list-header>
-          
           <ion-menu-toggle  auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item  routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
