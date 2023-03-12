@@ -25,8 +25,8 @@ export class ManageComponent implements OnInit {
   
   }
   private async loadTeamAndDriver(manage:Manage){
-    this._task.next(await this.teamsSvc.getteamById(manage.teamId));
-    this._person.next(await this.driverSvc.getDriverById(manage.driverId));
+    this._team.next(await this.teamsSvc.getteamById(manage.teamId));
+    this._driver.next(await this.driverSvc.getDriverById(manage.driverId));
   }
   getManage():Manage{
     return this._manage;
@@ -35,10 +35,10 @@ export class ManageComponent implements OnInit {
   isLowResolution = lowres;
   private _manage:Manage;
 
-  private _task:BehaviorSubject<Team> = new BehaviorSubject<Team>(null);
-  private _person:BehaviorSubject<Driver> = new BehaviorSubject<Driver>(null);
-  team$:Observable<Team> = this._task.asObservable();
-  driver$:Observable<Driver> = this._person.asObservable();
+  private _team:BehaviorSubject<Team> = new BehaviorSubject<Team>(null);
+  private _driver:BehaviorSubject<Driver> = new BehaviorSubject<Driver>(null);
+  team$:Observable<Team> = this._team.asObservable();
+  driver$:Observable<Driver> = this._driver.asObservable();
   constructor(
     private driverSvc:DriverService,
     private teamsSvc:TeamsService,
@@ -54,12 +54,12 @@ export class ManageComponent implements OnInit {
 
   onEditClick(slide:IonItemSliding){
     slide.close();
-    this.onEdit.emit(this.Manage);
+    this.onEdit.emit(this._manage);
   }
 
   onDeleteClick(slide:IonItemSliding){
     slide.close();
-    this.onDelete.emit(this.Manage);
+    this.onDelete.emit(this._manage);
   }
 
   

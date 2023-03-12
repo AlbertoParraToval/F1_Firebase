@@ -1,22 +1,30 @@
 import { Injectable } from '@angular/core';
 import { DocumentData } from 'firebase/firestore';
 import { BehaviorSubject } from 'rxjs';
-import { Circuit } from '../models';
+import { Team } from 'src/app/core/models/teams.model';
+import { environment } from 'src/environments/environment';
+
 import { FileUploaded, FirebaseService } from './firebase/firebase-service';
+import { File } from '@awesome-cordova-plugins/file/ngx'
+import { Platform } from '@ionic/angular';
+import { blobToBase64, dataURLtoBlob } from '../utils/blobs';
+import { Circuit } from '../models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CircuitsService {
 
-  private _CircuitSubject:BehaviorSubject<Circuit[]> = new BehaviorSubject([]);
-  public Circuit$ = this._CircuitSubject.asObservable();
-  
+  private _circuitSubject:BehaviorSubject<Circuit[]> = new BehaviorSubject([]);
+  public circuit$ = this._circuitSubject.asObservable();
+
   unsubscr;
   constructor(
-    private firebase:FirebaseService
+    private platform:Platform,
+    private firebase:FirebaseService,
+    private file:File
   ) {
-    this.unsubscr = this.firebase.subscribeToCollection('Circuits',this._CircuitSubject, this.mapCircuit);
+    this.unsubscr = this.firebase.subscribeToCollection('circuits',this._circuitSubject, this.mapCircuit);
   }
 
   ngOnDestroy(): void {
@@ -27,25 +35,26 @@ export class CircuitsService {
     return {
       id:0,
       docId:doc.id,
-      localizacion:doc.data().localizacion,
+      name:doc.data().name,
+      description:doc.data().description,
       picture:doc.data().picture,
     };
   }
 
   getCircuits(){
-    return this._CircuitSubject.value;
-
+    return this._circuitSubject.value;
   }
 
   getCircuitById(id:string):Promise<Circuit>{
     return new Promise<Circuit>(async (resolve, reject)=>{
       try {
-        var _Circuit = (await this.firebase.getDocument('Circuits', id));
+        var circuit = (await this.firebase.getDocument('circuits', id));
         resolve({
           id:0,
-          docId:_Circuit.id,
-          localizacion:_Circuit.data.localizacion,
-          picture:_Circuit.data.picture, 
+          docId:circuit.id,
+          name:circuit.data.name,
+          localizacion:circuit.data.localizacion,
+          picture:circuit.data.picture,
         });  
       } catch (error) {
         reject(error);
@@ -53,25 +62,25 @@ export class CircuitsService {
     });
   }
 
-  async deleteCircuit(Circuit:Circuit){
-    try {
-      await this.firebase.deleteDocument('Circuits', Circuit.docId);  
-    } catch (error) {
-      console.log(error);
-    }
+  async deleteCircuit(circuit:Circuit){
+    await this.firebase.deleteDocument('circuits', circuit.docId);
+  } catch (error) {
+    console.log(error);
   }
 
-  async addCircuit(Circuit:Circuit){
-    var _Circuit = {
-      docId:Circuit.docId,
-      localizacion:Circuit.localizacion,
+  async addCircuit(circuit:Circuit){
+    var _circuit= {
+      id:0,
+      docId:circuit.docId,
+      name:circuit.name,
+      localizacion:circuit.localizacion,
     };
-    if(Circuit['pictureFile']){
-      var response = await this.uploadImage(Circuit['pictureFile']);
-      _Circuit['picture'] = response.image;
+    if(circuit['pictureFile']){
+      var response = await this.uploadImage(circuit['pictureFile']);
+      _circuit['picture'] = response.image;
     }
     try {
-      await this.firebase.createDocument('Circuits', _Circuit);  
+      await this.firebase.createDocument('circuits', _circuit);  
     } catch (error) {
       console.log(error);
     }
@@ -88,20 +97,27 @@ export class CircuitsService {
     });
   }
 
-  async updateCircuit(Circuit:Circuit){
-    var _Circuit = {
-      docId:Circuit.docId,
-      localizacion:Circuit.localizacion,
+  async updateCircuit(circuit:Circuit){
+    var _circuit = {
+      id:0,
+      docId:circuit.docId,
+      name:circuit.name,
+      localizacion:circuit.localizacion,
     };
-    if(Circuit['pictureFile']){
-      var response:FileUploaded = await this.uploadImage(Circuit['pictureFile']);
-      _Circuit['picture'] = response.file;
+    if(circuit['pictureFile']){
+      var response:FileUploaded = await this.uploadImage(circuit['pictureFile']);
+      _circuit['picture'] = response.file;
     }
     try {
-      await this.firebase.updateDocument('Circuits', Circuit.docId, _Circuit);  
+      await this.firebase.updateDocument('circuits', circuit.docId, _circuit);  
     } catch (error) {
       console.log(error);
     }
-      
+  }
+
+  async writeToFile(){
+    var dataToText = JSON.stringify(this._circuitSubject.value);
+    var data = new Blob([dataToText], {type: 'text/plain'});
+    this.firebase.fileUpload(data, 'text/plain', 'circuits', '.txt');
   }
 }

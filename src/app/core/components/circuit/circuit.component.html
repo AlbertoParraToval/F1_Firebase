@@ -4,7 +4,7 @@
       <img *ngIf="!_circuit.picture" src="\assets\user.png" />
       <img *ngIf="_circuit.picture" alt="" [src]="_circuit.picture" />
     </ion-card-header>
-      <ion-card-subtitle>{{_circuit.localizacion}}.</ion-card-subtitle>
+      <ion-card-subtitle>{{_circuit.name}}.</ion-card-subtitle>
       <ion-card-content>
         {{_circuit.localizacion}}
       </ion-card-content>

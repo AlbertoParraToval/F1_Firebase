@@ -6,7 +6,6 @@ import { getAnalytics, logEvent, setUserId, setUserProperties } from "firebase/a
 import { getFirestore, addDoc, collection, updateDoc, doc, onSnapshot, getDoc, DocumentData} from "firebase/firestore";
 import { getStorage, ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { Auth, getAuth, OAuthCredential, createUserWithEmailAndPassword, signInWithCredential, signInAnonymously, SignInMethod, signInWithPopup, signOut, UserCredential } from "firebase/auth";
-import { HttpClientProvider } from "src/app/core";
 
 export interface FileUploaded{
   path:string,

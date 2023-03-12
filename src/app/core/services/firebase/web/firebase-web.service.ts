@@ -6,7 +6,6 @@ import { setUserId, setUserProperties } from "firebase/analytics";
 import { getFirestore, addDoc, collection, updateDoc, doc, onSnapshot, getDoc, setDoc, query, where, getDocs, Unsubscribe, DocumentData, deleteDoc} from "firebase/firestore";
 import { getStorage, ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { createUserWithEmailAndPassword, getAuth, deleteUser, signInAnonymously, signOut, signInWithEmailAndPassword, initializeAuth, indexedDBLocalPersistence, UserCredential } from "firebase/auth";
-import { HttpClientProvider } from "src/app/core";
 
 
 

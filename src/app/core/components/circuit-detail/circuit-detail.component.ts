@@ -20,9 +20,10 @@ export class CircuitDetailComponent implements OnInit {
     if (circuit) {
       this.form.controls.id.setValue(circuit.id);
       this.form.controls.docId.setValue(circuit.docId);
+      this.form.controls.name.setValue(circuit.name);
       this.form.controls.localizacion.setValue(circuit.localizacion);
       this.form.controls.picture.setValue(circuit.picture);
-      
+    
       if (circuit.picture) this.currentImage.next(circuit.picture);
       this.form.controls.pictureFile.setValue(null);
       this.mode = 'Edit';
@@ -39,6 +40,7 @@ export class CircuitDetailComponent implements OnInit {
     this.form = this.fb.group({
       id: [null],
       docId: [''],
+      name:['',[Validators.required]],
       localizacion: ['', [Validators.required]],
       picture: [''],
       pictureFile: [null],
@@ -48,7 +50,7 @@ export class CircuitDetailComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    this.modal.dismiss({ driver: this.form.value, mode: this.mode }, 'ok');
+    this.modal.dismiss({ circuit: this.form.value, mode: this.mode }, 'ok');
   }
 
   onDismiss(result) {

@@ -1,2 +1,2 @@
-<app-circuit *ngFor="let circuits of (getCircuits() | async)" [_circuit]="circuits" (onEdit)="onEditCircuit($event)" 
+<app-circuit *ngFor="let circuitdata of (getCircuits() | async)" [_circuit]="circuitdata" (onEdit)="onEditCircuit($event)" 
 (onDelete)="onDeleteCircuit($event)"></app-circuit>

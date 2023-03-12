@@ -22,14 +22,14 @@ export class CircuitsComponent implements OnInit {
   }
 
   getCircuits(){
-    return this.CircuitsSvc.Circuit$;
+    return this.CircuitsSvc.circuit$;
   }
 
-  async presentCircuitForm(CircuitData:Circuit){
+  async presentCircuitForm(circuitdata:Circuit){
     const modal = await this.modal.create({
       component:CircuitDetailComponent,
       componentProps:{
-        Circuit:CircuitData
+        circuit:circuitdata
       },
     });
     modal.present();
@@ -37,10 +37,10 @@ export class CircuitsComponent implements OnInit {
       if(result && result.data){
         switch(result.data.mode){
           case 'New':
-            this.CircuitsSvc.addCircuit(result.data.Circuit);
+            this.CircuitsSvc.addCircuit(result.data.circuit);
             break;
           case 'Edit':
-            this.CircuitsSvc.updateCircuit(result.data.Circuit);
+            this.CircuitsSvc.updateCircuit(result.data.circuit);
             break;
           default:
         }
@@ -48,11 +48,11 @@ export class CircuitsComponent implements OnInit {
     });
   }
 
-  onEditCircuit(CircuitData){
-    this.presentCircuitForm(CircuitData);
+  onEditCircuit(circuitdata){
+    this.presentCircuitForm(circuitdata);
   }
 
-  async onDeleteAlert(CircuitData){
+  async onDeleteAlert(circuitdata){
     const alert = await this.alert.create({
       header:'Atención',
       message: '¿Está seguro de que desear borrar a la persona?',
@@ -68,7 +68,7 @@ export class CircuitsComponent implements OnInit {
           text: 'Borrar',
           role: 'confirm',
           handler: () => {
-            this.CircuitsSvc.deleteCircuit(CircuitData);
+            this.CircuitsSvc.deleteCircuit(circuitdata);
           },
         },
       ],
@@ -79,28 +79,10 @@ export class CircuitsComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
-  async onCircuitExistsAlert(CircuitData){
-    const alert = await this.alert.create({
-      header: 'Error',
-      message: 'No es posible borrar la persona porque está asignada a una tarea',
-      buttons: [
-        {
-          text: 'Cerrar',
-          role: 'close',
-          handler: () => {
-          
-          },
-        },
-      ],
-    });
 
-    await alert.present();
 
-    const { role } = await alert.onDidDismiss();
-  }
-
-  async onDeleteCircuit(CircuitData){
-      this.onCircuitExistsAlert(CircuitData);
+  async onDeleteCircuit(circuitdata){
+      this.onDeleteAlert(circuitdata);
   }
 
 }

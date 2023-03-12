@@ -67,7 +67,7 @@ export class ManagementsComponent implements OnInit {
           role: 'confirm',
           handler: () => {
             console.log(manage)
-            this.manageSvc.deleteManageById(manage);
+            this.manageSvc.deleteManageById(manage.id);
           },
         },
       ],
