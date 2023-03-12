@@ -1,6 +1,6 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
-import { CircuitComponent, CircuitDetailComponent, DriverComponent,  ManageComponent,  ManageDetailComponent,  TeamComponent, TeamDetailComponent } from '.'
+import { CircuitComponent, CircuitDetailComponent, DriverComponent,  ManageComponent,  ManageDetailComponent, TeamComponent, TeamDetailComponent } from '.'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule, Platform } from '@ionic/angular';
 import { DriverDetailComponent, } from '.';
@@ -30,7 +30,8 @@ registerLocaleData(es);
     ManageComponent,
     ManageDetailComponent,
     CircuitComponent,
-    CircuitDetailComponent
+    CircuitDetailComponent,
+
   ],
   imports: [
     CommonModule,
@@ -65,7 +66,8 @@ registerLocaleData(es);
     ManageComponent,
     ManageDetailComponent,
     CircuitComponent,
-    CircuitDetailComponent
+    CircuitDetailComponent,
+
 
   ],
   providers:[
