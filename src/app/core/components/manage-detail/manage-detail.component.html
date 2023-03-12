@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{'assignment-detail.title' | translate}}</ion-title>
+    <ion-title>{{'management-detail.title' | translate}}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="onDismiss(null)">Cerrar</ion-button>
     </ion-buttons>
@@ -11,13 +11,13 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
     <ion-item-divider>
       <ion-label>
-      {{'assignment-detail.driver' | translate}}
+      {{'management-detail.driver' | translate}}
       </ion-label>
     </ion-item-divider>
     <app-team-selectable formControlName="teamId"></app-team-selectable>
     <ion-item-divider>
       <ion-label>
-        {{'assignment-detail.team' | translate}}
+        {{'management-detail.team' | translate}}
       </ion-label>
     </ion-item-divider>
     <app-driver-selectable formControlName="driverId"></app-driver-selectable>

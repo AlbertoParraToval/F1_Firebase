@@ -51,12 +51,12 @@
         "confirm_password":"Por favor, repita la contraseña",
         "send":"Enviar"
     },
-    "assignment-detail":{
+    "management-detail":{
         "title":"Detalle del Fichaje",
         "driver":"Piloto Fichado",
         "team":"Escudería"
     },
-    "person-detail":{
+    "driver-detail":{
         "title":"Datos del Piloto",
         "name":"Nombre",
         "name-placeholder":"Introduce el nombre",
@@ -65,7 +65,7 @@
         "nickname":"Apodo",
         "nickname-placeholder":"Introduce el apodo"
     },
-    "task-detail":{
+    "team-detail":{
         "title":"Datos de la Escudería",
         "name":"Nombre",
         "name-placeholder":"Introduce el nombre de la escudería",
@@ -78,6 +78,21 @@
         "texto1":" A la hora de plantearme realizar la actividad de ionic que el profesor nos planteó, quise hacer una App que siempre he querido tener. Como fan de la F1 desde chiquitito pues me hubiese gustado que en una App pudieses editar los pilotos y ponerlos en diferentes equipos a los que están en la realidad.",
         "Intro2":"¿Cómo funciona esta App?",
         "texto2":" Esta App se encuentra dividida en 3 páginas, la 1º 'Pilotos' donde se recogerá una lista de pilotos pudiendo insertar, modificar y borrar a nuestro antojo, una 2 página de 'Equipos' donde se recogerá tambien otra lista donde se modificará, insertará y borrará los datos de la misma.Por otro lado habrá una 3º página que se centrará en enlazar las dos anteriores pero siguiendo la misma funcionalidad, es decir, borrar, modificar e insertar."
-        
+    },
+
+    "carrera":  {
+        "carreraN2":"Carrera Número 2",
+        "carreraN3":"Carrera Número 3",
+        "location1":"Circuito de Jeddah",
+        "location2":"Circuito de Albert Park",
+        "date1":"19 de marzo, 2023",
+        "date2":"4 de Abril, 2023",
+        "nombreGp1":"Gran Premio de Arabia Saudi",
+        "nombreGp2":"Gran Premio de Australia",
+        "horas":"horas",
+        "dias":"días",
+        "minutos":"minutos",
+        "segundos":"segundos"
+
     }
 }

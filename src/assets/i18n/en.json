@@ -22,7 +22,6 @@
     },
     "home":{
         "title":"F1_Firebase",
-        "welcome":"Welcome",
         "langButton":"Change Language",
         "close":"Sign out"
     },
@@ -35,11 +34,11 @@
         "title":"Sign in",
         "email":"Email",
         "password":"Password",
-        "send":"Send"
+        "send":"Sign in"
     },
     "register":{
         "title":"Wecolme to F1 Fantasy Registration",
-        "register":"Without account?, sign up now!",
+        "register":"Sign up",
         "first_name":"First name",
         "last_name":"Last name",
         "email":"Email",
@@ -47,12 +46,12 @@
         "confirm_password":"Repeat password",
         "send":"Send"
     },
-    "assignment-detail":{
+    "management-detail":{
         "title":"Transfer detail",
         "driver":"Driver",
         "team":"Team"
     },
-    "person-detail":{
+    "driver-detail":{
         "title":"Person detail",
         "name":"Name",
         "name-placeholder":"Type the name",
@@ -61,7 +60,7 @@
         "nickname":"Nickname",
         "nickname-placeholder":"Type the nickname"
     },
-    "task-detail":{
+    "team-detail":{
         "title":"Team info",
         "name":"Name",
         "name-placeholder":"Type a name for the team",
@@ -76,5 +75,20 @@
         "Intro2":"How does this App work?",
         "texto2":" This App is divided into 3 pages, the 1st 'Pilots' where you will find a list of pilots where you can insert, modify and delete as you wish, a 2nd page 'Teams' where you will also find another list where you can modify, insert and delete the data of the same, and a 3rd page that will focus on linking the previous two but following the same functionality, ie, delete, modify and insert."
         
+    },
+    "carrera":  {
+        "carreraN2":"Race Number 2",
+        "carreraN3":"Race Number 3",
+        "location1":"Circuit of Jeddah",
+        "location2":"Circuit of Albert Park",
+        "date1":"19 de march, 2023",
+        "date2":"4 de April, 2023",
+        "nombreGp1":"Grand Prix of Arabia Saudi",
+        "nombreGp2":"Grand Prix of Australia",
+        "horas":"hours",
+        "dias":"days",
+        "minutos":"minutes",
+        "segundos":"seconds"
+
     }
 }

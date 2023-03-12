@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{'task-detail.title' | translate}}</ion-title>
+    <ion-title>{{'team-detail.title' | translate}}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="onDismiss(null)">{{'modal.close' | translate}}</ion-button>
     </ion-buttons>
@@ -34,13 +34,13 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
     <ion-item>
       <ion-label position="floating">
-        {{'task-detail.name' | translate}}
+        {{'team-detail.name' | translate}}
       </ion-label>
-      <ion-input type="text" placeholder="{{'task-detail.name-placeholder' | translate}}" formControlName="name"></ion-input>
+      <ion-input type="text" placeholder="{{'team-detail.name-placeholder' | translate}}" formControlName="name"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">
-        {{'task-detail.duration' | translate}}
+        {{'team-detail.duration' | translate}}
       </ion-label>
       <ion-input  formControlName="description"></ion-input>
     </ion-item>

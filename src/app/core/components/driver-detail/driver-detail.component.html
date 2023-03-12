@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{'person-detail.title' | translate}}</ion-title>
+    <ion-title>{{'driver-detail.title' | translate}}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="onDismiss(null)">{{'modal.close' | translate}}</ion-button>
     </ion-buttons>
@@ -32,15 +32,15 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
     <ion-item>
       <ion-label position="floating">
-        {{'person-detail.name' | translate}}
+        {{'driver-detail.name' | translate}}
       </ion-label>
-      <ion-input type="text" placeholder="{{'person-detail.name-placeholder' | translate}}" formControlName="first_name"></ion-input>
+      <ion-input type="text" placeholder="{{'driver-detail.name-placeholder' | translate}}" formControlName="first_name"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">
-        {{'person-detail.surname' | translate}}
+        {{'driver-detail.surname' | translate}}
       </ion-label>
-      <ion-input type="text" placeholder="{{'person-detail.surname-placeholder' | translate}}" formControlName="last_name"></ion-input>
+      <ion-input type="text" placeholder="{{'driver-detail.surname-placeholder' | translate}}" formControlName="last_name"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">
