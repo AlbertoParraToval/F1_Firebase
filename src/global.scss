@@ -52,7 +52,7 @@ ion-button.item-expanded{
     }
 }
 
-ion-avatar.task{
+ion-avatar.team{
     min-width:75px;
     min-height:75px;
     margin:10px;
@@ -62,19 +62,14 @@ ion-avatar.task{
     min-height: unset!important;
 }
 
-ion-avatar.person{
+ion-avatar.driver{
     min-width:50px;
     min-height:50px;
     margin:10px;
     margin-right:20px
 }
 
-.modal-full-right-side{
-    display:flex;
-    --height:100%;
-    justify-content: flex-end;
-    --max-width:350px;
-}
+
 .fc .fc-timegrid-slot {
     height: 65px !important; 
     border-bottom: 0;
@@ -92,6 +87,12 @@ ion-avatar.person{
 
 ion-popover {
     &::part(content) {
-      min-width: 320px;
+        min-width: 320px;
     }
-  }
+}
+
+@font-face {
+    font-family: 'MyFont';
+    src: url('./assets/fonts/Merriweather-Regular.ttf') format('merriBold'),
+        url('./assets/fonts/Merriweather-Bold.ttf') format('merriBold');
+    }

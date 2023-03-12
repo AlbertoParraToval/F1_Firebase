@@ -1,8 +1,8 @@
 <ion-grid>
   <ion-card>
     <ion-card-header>
-      <img *ngIf="!_circuit.picture" src="\assets\user.png" />
-      <img *ngIf="_circuit.picture" alt="" [src]="_circuit.picture" />
+      <ion-img *ngIf="!_circuit.picture" src="\assets\user.png"></ion-img>
+      <ion-img *ngIf="_circuit.picture" alt="" [src]="_circuit.picture"></ion-img>
     </ion-card-header>
       <ion-card-subtitle>{{_circuit.name}}.</ion-card-subtitle>
       <ion-card-content>
