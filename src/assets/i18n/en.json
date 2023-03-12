@@ -90,5 +90,13 @@
         "minutos":"minutes",
         "segundos":"seconds"
 
+    },
+    "circuits":{
+        "title":"Circuit data",
+        "name":"Circuit name",
+        "localizacion":"Location of the circuit",
+        "foto":"Upload a photo with a link",
+        "btn_cerrar":"Close",
+        "btn_enviar":"Send"
     }
 }

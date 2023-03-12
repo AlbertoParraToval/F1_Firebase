@@ -94,5 +94,13 @@
         "minutos":"minutos",
         "segundos":"segundos"
 
+    },
+    "circuits":{
+        "title":"Información Circuito",
+        "name":"Nombre del circuito",
+        "localizacion":"Localizacion de circuito",
+        "foto":"Introduce una foto",
+        "btn_cerrar":"Cerrar",
+        "btn_enviar":"Enviar"
     }
 }
