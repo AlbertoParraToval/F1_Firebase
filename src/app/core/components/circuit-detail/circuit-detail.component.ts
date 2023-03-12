@@ -14,56 +14,33 @@ import { PlatformService } from '../../services/platform.service';
 export class CircuitDetailComponent implements OnInit {
   form: FormGroup;
   mode: 'New' | 'Edit' = 'New';
-  currentImage = new BehaviorSubject<string>('');
-  currentImage$ = this.currentImage.asObservable();
-  @Input('circuit') set circuit(circuit: Circuit) {
-    if (circuit) {
-      this.form.controls.id.setValue(circuit.id);
-      this.form.controls.docId.setValue(circuit.docId);
-      this.form.controls.name.setValue(circuit.name);
-      this.form.controls.localizacion.setValue(circuit.localizacion);
-      this.form.controls.picture.setValue(circuit.picture);
-    
-      if (circuit.picture) this.currentImage.next(circuit.picture);
-      this.form.controls.pictureFile.setValue(null);
+
+  @Input('circuitdata') set circuitdata(circuitdata: Circuit) {
+    if (circuitdata) {
+      this.form.controls['id'].setValue(circuitdata.id);
+      this.form.controls['name'].setValue(circuitdata.name);
+      this.form.controls['localizacion'].setValue(circuitdata.localizacion);
+      this.form.controls['picture'].setValue(circuitdata.picture);
       this.mode = 'Edit';
     }
   }
 
-  constructor(
-    public platform: PlatformService,
-    private photoSvc: PhotoService,
-    private fb: FormBuilder,
-    private modal: ModalController,
-    private cdr: ChangeDetectorRef
-  ) {
+  constructor(private fb: FormBuilder, private modal: ModalController) {
     this.form = this.fb.group({
       id: [null],
-      docId: [''],
-      name:['',[Validators.required]],
+      name: ['', [Validators.required]],
       localizacion: ['', [Validators.required]],
-      picture: [''],
-      pictureFile: [null],
+      picture:["",[]]
     });
   }
 
-  ngOnInit() {}
-
   onSubmit() {
-    this.modal.dismiss({ circuit: this.form.value, mode: this.mode }, 'ok');
+    this.modal.dismiss({ circuitdata: this.form.value, mode: this.mode }, 'ok');
   }
 
-  onDismiss(result) {
+  onDismiss(_result: any) {
     this.modal.dismiss(null, 'cancel');
   }
 
-  async changePic(
-    fileLoader: HTMLInputElement,
-    mode: 'library' | 'camera' | 'file'
-  ) {
-    var item: PhotoItem = await this.photoSvc.getPicture(mode, fileLoader);
-    this.currentImage.next(item.base64);
-    this.cdr.detectChanges();
-    this.form.controls.pictureFile.setValue(item.blob);
-  }
+  ngOnInit() {}
 }

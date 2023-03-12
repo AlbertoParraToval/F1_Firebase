@@ -29,7 +29,6 @@ export class ManagementsComponent implements OnInit {
       componentProps:{
         Manage:manage
       },
-      cssClass:"modal-full-right-side"
     });
     modal.present();
     modal.onDidDismiss().then(result=>{

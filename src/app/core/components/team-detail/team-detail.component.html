@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="danger">
     <ion-title>{{'team-detail.title' | translate}}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="onDismiss(null)">{{'modal.close' | translate}}</ion-button>
@@ -11,7 +11,7 @@
   <ion-img  *ngIf="currentImage.value" [src]="currentImage$ | async"></ion-img>
   <ion-img *ngIf="!currentImage.value" src="https://ionicframework.com/docs/img/demos/thumbnail.svg"></ion-img>
   <ion-button *ngIf="(platform.isNative$ | async)" expand="full" id="picture-button">{{'change-picture.title' | translate}}</ion-button>
-  <ion-button *ngIf="!(platform.isNative$ | async)" expand="full" (click)="changePic(fileLoader, 'file')">{{'change-picture.title' | translate}}</ion-button>
+  <ion-button color="medium" *ngIf="!(platform.isNative$ | async)" expand="full" (click)="changePic(fileLoader, 'file')">{{'change-picture.title' | translate}}</ion-button>
   <ion-popover *ngIf="platform.isNative$ | async" style="width:100%" trigger="picture-button" [dismissOnSelect]="true">
     <ng-template>
       <ion-content class="ion-padding">
@@ -50,7 +50,7 @@
   <ion-grid>
     <ion-row>
       <ion-col class="ion-text-center">
-        <ion-button [disabled]="!form.valid" (click)="onSubmit()">{{mode=="Edit"?('modal.edit' | translate):('modal.new' | translate)}}</ion-button>
+        <ion-button color="medium" [disabled]="!form.valid" (click)="onSubmit()">{{mode=="Edit"?('modal.edit' | translate):('modal.new' | translate)}}</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

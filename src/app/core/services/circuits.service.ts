@@ -1,124 +1,111 @@
 import { Injectable } from '@angular/core';
-import { DocumentData } from 'firebase/firestore';
-import { BehaviorSubject } from 'rxjs';
-import { Team } from 'src/app/core/models/teams.model';
-import { environment } from 'src/environments/environment';
-import { HttpClientProvider } from './http-client.provider';
-
-import { FileUploaded, FirebaseService } from './firebase/firebase-service';
-import { File } from '@awesome-cordova-plugins/file/ngx'
-import { Platform } from '@ionic/angular';
-import { blobToBase64, dataURLtoBlob } from '../utils/blobs';
 import { Circuit } from '../models';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class CircuitsService {
+  public circuits: Circuit[] = [
+    {
+      id:2,
+      name:"	Hockenheimring",
+      localizacion:"Alemania",
+      picture:"https://drive.google.com/uc?export=view&id=1K6a3Kc2oAfA490FkldUkNeoj6c8wKbVI"
+    },
+    {
+      id:3,
+      name:"Hungaroring",
+      localizacion:"Hungría",
+      picture:"https://drive.google.com/uc?export=view&id=1RplKz0lGDIMkdElkC4DEaT3aaABLrnKv"
+      
+    },
+    {
+      id:4,
+      name:"Silverstone",
+      localizacion:"Gran Bretaña",
+      picture:"https://drive.google.com/uc?export=view&id=17oT0sSF35ZdbtQPveQ3yNc0rJhV_IvK2"
+    },
+    {
+      id:5,
+      name:"Circuit de Catalunya",
+      localizacion:"España",
+      picture:"https://drive.google.com/uc?export=view&id=1ttPfLG7WlEkDs3hh0pL0EEw_kY4fR7fD"
+    },
+    {
+      id:6,
+      name:"Redbull Ring",
+      localizacion:"Austria",
+      picture:"https://drive.google.com/uc?export=view&id=1vZ98wTMKd0q9zrG2bjGqzO5qacp3_0ey"
+    },
+    {
+      id:7,
+      name:"Interlagos",
+      localizacion:"Brasil",
+      picture:"https://drive.google.com/uc?export=view&id=1owKYalfxfDUXfzPs0euvH--fxsZCpJi0"
+    },
+    {
+      id:8,
+      name:"Hermanos Rodríguez",
+      localizacion:"Mexico",
+      picture:"https://drive.google.com/uc?export=view&id=1PLsLnL8ZI6frtHgyeemeeDWDEEtieuGI"
+    },
+    {
+      id:9,
+      name:"	Monza",
+      localizacion:"Italia",
+      picture:"https://drive.google.com/uc?export=view&id=1WyRK8VAjnQfK5XprZ9Q9_C8AbH796RhC"
+    },
+    {
+      id:10,
+      name:"Zandvoort",
+      localizacion:"Holanda",
+      picture:"https://drive.google.com/uc?export=view&id=12UNisViiKhvtB6KwhXyenR56aomybdLM"
+    },
+    {
+      id:11,
+      name:"	Bakú",
+      localizacion:"Azerbaián",
+      picture:"https://drive.google.com/uc?export=view&id=1Nen11E-KfbRMVLyB5W2Ny8s0qxThj2Zp"
+    },
+    {
+      id:12,
+      name:"Spa-Francorchamps",
+      localizacion:"Belgica",
+      picture:"https://drive.google.com/uc?export=view&id=1YrgSyvavgPlN-4we7WO1YFJRTHI4A6rn"
+    },
 
-  private _circuitSubject:BehaviorSubject<Circuit[]> = new BehaviorSubject([]);
-  public circuit$ = this._circuitSubject.asObservable();
+  ]
+  constructor() { }
+  id:number = this.circuits.length + 1 ;
 
-  unsubscr;
-  constructor(
-    private platform:Platform,
-    private firebase:FirebaseService,
-    private file:File
-  ) {
-    this.unsubscr = this.firebase.subscribeToCollection('circuits',this._circuitSubject, this.mapCircuit);
+  public getCircuit(): Circuit[] {
+    return this.circuits;
   }
 
-  ngOnDestroy(): void {
-    this.unsubscr();
+  public getCircuitById(id: number): Circuit{
+    return this.circuits[id];
   }
 
-  private mapCircuit(doc:DocumentData){
-    return {
-      id:0,
-      docId:doc.id,
-      name:doc.data().name,
-      description:doc.data().description,
-      picture:doc.data().picture,
-    };
+  public getCircuitImg(id: number): Circuit{
+    return this.circuits[id];
   }
 
-  getCircuits(){
-    return this._circuitSubject.value;
+  deleteCircuitById(id: number){
+    this.circuits = this.circuits.filter(p=>p.id != id); 
   }
 
-  getCircuitById(id:string):Promise<Circuit>{
-    return new Promise<Circuit>(async (resolve, reject)=>{
-      try {
-        var circuit = (await this.firebase.getDocument('circuits', id));
-        resolve({
-          id:0,
-          docId:circuit.id,
-          name:circuit.data.name,
-          localizacion:circuit.data.localizacion,
-          picture:circuit.data.picture,
-        });  
-      } catch (error) {
-        reject(error);
-      }
-    });
+    addCircuit(circuitdata:Circuit){
+    circuitdata.id = this.id++
+    this.circuits.push(circuitdata);
   }
 
-  async deleteCircuit(circuit:Circuit){
-    await this.firebase.deleteDocument('circuits', circuit.docId);
-  } catch (error) {
-    console.log(error);
-  }
-
-  async addCircuit(circuit:Circuit){
-    var _circuit= {
-      id:0,
-      docId:circuit.docId,
-      name:circuit.name,
-      localizacion:circuit.localizacion,
-    };
-    if(circuit['pictureFile']){
-      var response = await this.uploadImage(circuit['pictureFile']);
-      _circuit['picture'] = response.image;
+  updateCircuit(circuitUpdate:Circuit){
+    var circuitdata = this.circuits.find(p=>p.id==circuitUpdate.id);
+    if(circuitdata){
+      circuitdata.name = circuitUpdate.name;
+      circuitdata.localizacion = circuitUpdate.localizacion;
+      circuitdata.picture = circuitUpdate.picture;
     }
-    try {
-      await this.firebase.createDocument('circuits', _circuit);  
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  uploadImage(file):Promise<any>{  
-    return new Promise(async (resolve, reject)=>{
-      try {
-        const data = await this.firebase.imageUpload(file);  
-        resolve(data);
-      } catch (error) {
-        resolve(error);
-      }
-    });
-  }
-
-  async updateCircuit(circuit:Circuit){
-    var _circuit = {
-      id:0,
-      docId:circuit.docId,
-      name:circuit.name,
-      localizacion:circuit.localizacion,
-    };
-    if(circuit['pictureFile']){
-      var response:FileUploaded = await this.uploadImage(circuit['pictureFile']);
-      _circuit['picture'] = response.file;
-    }
-    try {
-      await this.firebase.updateDocument('circuits', circuit.docId, _circuit);  
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async writeToFile(){
-    var dataToText = JSON.stringify(this._circuitSubject.value);
-    var data = new Blob([dataToText], {type: 'text/plain'});
-    this.firebase.fileUpload(data, 'text/plain', 'circuits', '.txt');
   }
 }

@@ -32,7 +32,6 @@ export class DriversComponent implements OnInit {
       componentProps:{
         driver:driverData
       },
-      cssClass:"modal-full-right-side"
     });
     modal.present();
     modal.onDidDismiss().then(result=>{

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { AlertController, ModalController } from '@ionic/angular';
 import { Circuit, CircuitDetailComponent, ManageService } from 'src/app/core';
 import { CircuitsService } from 'src/app/core/services/circuits.service';
@@ -10,37 +11,37 @@ import { CircuitsService } from 'src/app/core/services/circuits.service';
 })
 export class CircuitsComponent implements OnInit {
 
+  circuitdata:Circuit;
+  form:FormGroup;
   constructor(
-    private CircuitsSvc:CircuitsService,
-    private ManagesSvc:ManageService,
-    private modal:ModalController,
-    private alert:AlertController,
-  ) { }
 
-  ngOnInit() {
+    private circuitSvc: CircuitsService,
+    private modal: ModalController,
+    private alert: AlertController
+  ) {}
 
+  ngOnInit() {}
+
+  getCircuits(): Circuit[] {
+    return this.circuitSvc.getCircuit();
   }
-
-  getCircuits(){
-    return this.CircuitsSvc.circuit$;
-  }
-
-  async presentCircuitForm(circuitdata:Circuit){
+  
+  async presentCircuitForm(circuitdata: Circuit) {
     const modal = await this.modal.create({
-      component:CircuitDetailComponent,
-      componentProps:{
-        circuit:circuitdata
+      component: CircuitDetailComponent,
+      componentProps: {
+        circuitdata:circuitdata
       },
     });
     modal.present();
-    modal.onDidDismiss().then(result=>{
-      if(result && result.data){
-        switch(result.data.mode){
+    modal.onDidDismiss().then((resultCircuit) => {
+      if (resultCircuit && resultCircuit.data) {
+        switch (resultCircuit.data.mode) {
           case 'New':
-            this.CircuitsSvc.addCircuit(result.data.circuit);
+            this.circuitSvc.addCircuit(resultCircuit.data.circuitdata);
             break;
           case 'Edit':
-            this.CircuitsSvc.updateCircuit(result.data.circuit);
+            this.circuitSvc.updateCircuit(resultCircuit.data.circuitdata);
             break;
           default:
         }
@@ -48,27 +49,30 @@ export class CircuitsComponent implements OnInit {
     });
   }
 
-  onEditCircuit(circuitdata){
+  onNewCircuit() {
+    this.presentCircuitForm(null!);
+  }
+
+  onEditCircuit(circuitdata:Circuit) {
     this.presentCircuitForm(circuitdata);
   }
 
-  async onDeleteAlert(circuitdata){
+  async onDeleteAlert(circuitdata: Circuit) {
     const alert = await this.alert.create({
-      header:'Atención',
-      message: '¿Está seguro de que desear borrar a la persona?',
+      header: '¿Seguro, no podrás volver atrás?',
       buttons: [
         {
           text: 'Cancelar',
           role: 'cancel',
           handler: () => {
-            console.log("Operacion cancelada");
+            console.log('Operacion cancelada');
           },
         },
         {
           text: 'Borrar',
           role: 'confirm',
           handler: () => {
-            this.CircuitsSvc.deleteCircuit(circuitdata);
+            this.circuitSvc.deleteCircuitById(circuitdata.id);
           },
         },
       ],
@@ -79,10 +83,7 @@ export class CircuitsComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
-
-
-  async onDeleteCircuit(circuitdata){
-      this.onDeleteAlert(circuitdata);
+  onDeleteCircuit(circuitdata:Circuit) {
+    this.onDeleteAlert(circuitdata);
   }
-
 }
