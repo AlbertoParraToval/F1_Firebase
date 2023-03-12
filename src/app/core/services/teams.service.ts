@@ -3,6 +3,7 @@ import { DocumentData } from 'firebase/firestore';
 import { BehaviorSubject } from 'rxjs';
 import { Team } from 'src/app/core/models/teams.model';
 import { environment } from 'src/environments/environment';
+import { HttpClientProvider } from './http-client.provider';
 
 import { FileUploaded, FirebaseService } from './firebase/firebase-service';
 import { File } from '@awesome-cordova-plugins/file/ngx'

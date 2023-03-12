@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { User, UserLogin, UserRegister } from '../models';
 import { FirebaseService } from './firebase/firebase-service';
 import { LocalStorageService } from './local-storage.service';
+import { HttpClientProvider } from './http-client.provider';
 
 
 

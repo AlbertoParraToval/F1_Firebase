@@ -3,6 +3,7 @@ import { DocumentData } from 'firebase/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Driver } from '../models/drivers.model';
 import { FileUploaded, FirebaseService } from './firebase/firebase-service';
+import { HttpClientProvider } from './http-client.provider';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { ThemeModeService } from './core';
 import { FirebaseService } from './core/services/firebase/firebase-service';
 import { LocaleService } from './core/services/locale.service';
 import { UserService } from './core/services/user.service';
@@ -29,10 +28,9 @@ export class AppComponent implements AfterViewInit{
     private locale:LocaleService,
     public user:UserService,
     private router:Router,
-    public themeService: ThemeModeService
   ) {
     this.init();
-    this.themeService.toggleDarkMode();
+    
   }
 
   private async init(){

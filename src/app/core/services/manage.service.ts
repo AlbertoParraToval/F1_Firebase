@@ -3,6 +3,7 @@ import * as moment from 'moment-timezone';
 import { Injectable } from '@angular/core';
 import { Manage } from '../models/Manage.model';
 import { BehaviorSubject, from, lastValueFrom, map, of, tap } from 'rxjs';
+import { HttpClientProvider } from './http-client.provider';
 
 import { FirebaseService } from './firebase/firebase-service';
 import { DocumentData } from 'firebase/firestore';
