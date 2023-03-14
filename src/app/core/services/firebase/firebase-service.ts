@@ -22,11 +22,11 @@ export interface FirestoreImages{
 }
 //Cambairlo
 
-export const FIRESTORE_TASKS_COLLECTION = 'tareando-tasks';
-export const FIRESTORE_PEOPLE_COLLECTION = 'tareando-people';
-export const FIRESTORE_ASSIGNMENTS_COLLECTION = 'tareando-assignments';
-export const FIRESTORE_IMAGES_COLLECTION = 'tareando-images';
-export const FIRESTORAGE_PREFIX_PATH = 'tareando-images';
+export const FIRESTORE_TEAMS_COLLECTION = 'f1-firebase-teams';
+export const FIRESTORE_DRIVERS_COLLECTION = 'f1-firebase-drivers';
+export const FIRESTORE_MANAGEMENT_COLLECTION = 'f1-firebase-driverManages';
+export const FIRESTORE_IMAGES_COLLECTION = 'f1-firebase-images';
+export const FIRESTORAGE_PREFIX_PATH = 'f1-firebase-images';
 
 
 @Injectable({providedIn: 'root'})
